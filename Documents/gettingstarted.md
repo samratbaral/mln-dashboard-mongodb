@@ -10,54 +10,60 @@
 
 1. Clone this repository and install the dependencies:
 
-    ```bash
-    git clone https://github.com/samratbaral/mln-dashboard
-    cd  mln-dashboard
-    npm install
-    node app.js
-    ```
+   ```bash
+   git clone https://github.com/samratbaral/mln-dashboard
+   cd  mln-dashboard
+   npm install
+   node app.js
+   ```
+
 2. Initialize the database by providing your network IP address to `samratbaral.sb [at] gmail [dot] com`. **(Disclamier: Approval Need before you go to next step)** You can inspect the database by running.
-    ```bash
-    Connected to MongoDB - Default http://localhost:3000/homepage
-    ```
+
+   ```bash
+   Connected to MongoDB - Default http://localhost:3000/homepage
+   ```
 
 3. On new terminal, you should now be able to run the application by running `python3 app.py`.
-    ```bash
-    Running on http://127.0.0.1:5000
-    ```
+   ```bash
+   Running on http://127.0.0.1:5000
+   ```
 4. Click on the URL shown in the terminal to get started!
-    ```bash
-    http://localhost:3000/homepage
-    ```
+   ```bash
+   http://localhost:3000/homepage
+   ```
+
 ## Getting Help
 
 - Before you start programming or seriously reading the code, I recommend setting aside an hour to read [this guide on express.js](http://expressjs.com/), and [this guide on advanced express.js features](http://expressjs.com/en/advanced/developing-template-engines.html).
 
 - Make sure you can get the server running before you make any changes to the code.
 
-- If you are using VS Code, you can enjoy break-point debugging within your IDE by debugging. 
+- If you are using VS Code, you can enjoy break-point debugging within your IDE by debugging.
 
 - Also, if you are using vscode, you will notice the following packages are recommended in your developer dependencies:
-    ```bash
-    "devDependencies": {
-    "nodemon": "^2.0.20",
-    "prettier": "2.7.1"
-    }
-    ```
-    then,
-    ```bash
-    npm start
-    
-    > gui-mln-dashboard@1.0.0 start
-    > nodemon app.js
 
-    [nodemon] 2.0.20
-    [nodemon] to restart at any time, enter `rs`
-    [nodemon] watching path(s): *.*
-    [nodemon] watching extensions: js,mjs,json
-    [nodemon] starting `node app.js`
-    Connected to MongoDB - Default http://localhost:3000/homepage
-    ```
+  ```bash
+  "devDependencies": {
+  "nodemon": "^2.0.20",
+  "prettier": "2.7.1"
+  }
+  ```
+
+  then,
+
+  ```bash
+  npm start
+
+  > gui-mln-dashboard@1.0.0 start
+  > nodemon app.js
+
+  [nodemon] 2.0.20
+  [nodemon] to restart at any time, enter `rs`
+  [nodemon] watching path(s): *.*
+  [nodemon] watching extensions: js,mjs,json
+  [nodemon] starting `node app.js`
+  Connected to MongoDB - Default http://localhost:3000/homepage
+  ```
 
 - [Sign up](https://github.com/features/copilot/signup) for [Github CoPilot](https://copilot.github.com/) if you haven't already. My experience is that copilot makes it easy to jump into new languages and frameworks.
 

@@ -1,52 +1,42 @@
-const path = require('path');
+const path = require("path");
 
-const express = require('express');
-const { body } = require('express-validator');
+const express = require("express");
+const { body } = require("express-validator");
 
-const adminController = require('../Controllers/admin');
-const isAuth = require('../Middleware/is-auth');
+const adminController = require("../Controllers/admin");
+const isAuth = require("../Middleware/is-auth");
 
 const router = express.Router();
 
 //we send this to flask
 router.post(
-    '/add-admin',
-    [
-      body('title')
-        .isString()
-        .isLength({ min: 3 })
-        .trim(),
-      body('price').isFloat(),
-      body('description')
-        .isLength({ min: 5, max: 400 })
-        .trim()
-    ],
-    isAuth,
-    adminController.postAddAdmin
-  );
+  "/add-admin",
+  [
+    body("title").isString().isLength({ min: 3 }).trim(),
+    body("price").isFloat(),
+    body("description").isLength({ min: 5, max: 400 }).trim(),
+  ],
+  isAuth,
+  adminController.postAddAdmin
+);
 
-router.get('/admins', adminController.getAdmins);
+router.get("/admins", adminController.getAdmins);
 
-router.post('/add-admin', adminController.postAddAdmin);
+router.post("/add-admin", adminController.postAddAdmin);
 
-router.get('/edit-admin/:adminID', adminController.getEditAdmin);
+router.get("/edit-admin/:adminID", adminController.getEditAdmin);
 
 router.post(
-    '/edit-admin',
-    [
-      body('title')
-        .isString()
-        .isLength({ min: 3 })
-        .trim(),
-      body('price').isFloat(),
-      body('description')
-        .isLength({ min: 5, max: 400 })
-        .trim()
-    ],
-    isAuth,
-    adminController.postAddAdmin
-  );
+  "/edit-admin",
+  [
+    body("title").isString().isLength({ min: 3 }).trim(),
+    body("price").isFloat(),
+    body("description").isLength({ min: 5, max: 400 }).trim(),
+  ],
+  isAuth,
+  adminController.postAddAdmin
+);
 
-router.post('/delete-admin', adminController.postDeleteAdmin);
+router.post("/delete-admin", adminController.postDeleteAdmin);
 
 module.exports = router;
