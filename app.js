@@ -13,16 +13,6 @@ const User = require('./Models/user');
 // const mongoConnect = require('./Utilities/database').mongoConnect;
 
 const MONGODB_URI = 'mongodb+srv://Samrat:5EFUbXqY8Ofqo3JK@cluster0.qjskv.mongodb.net/mln-dashboard';
-// const MONGODB_URI_BACKUP = 'mongodb+srv://Samrat:5EFUbXqY8Ofqo3JK@cluster0.qjskv.mongodb.net/mln-dashboard-backup';
-
-//A OBJECT DOCUMENT MAPPING LIBRARY : Mongoose : SODM
-//npm install --save mongoose
-//npm install --save mogodb 
-//-log-in samratbaral.sb@gmail.com = Free
-// Username: Samrat
-// Password:5EFUbXqY8Ofqo3JK
-// const MONGODB_URI =('mongodb+srv://Samrat:5EFUbXqY8Ofqo3JK@cluster0.qjskv.mongodb.net/?retryWrites=true&w=majorityshop');
-
 
 
 const app = express();
