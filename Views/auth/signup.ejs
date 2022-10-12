@@ -1,0 +1,136 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <% if (errorMessage) { %>
+            <span class="label danger"> ERROR REGISTERING NEW USER: <center>ERROR MESSAGE</center>
+                <div class="user-message user-message--error">
+                    <center><%= errorMessage %></center>
+                </div>
+           </span>
+        <% } %>
+
+       <center><h1>Register to MLN Dashboard </h1></center> 
+        <!-- <h3> <center>Register to MLN Dashboard</center>  </h3> -->
+
+        <form class="login-form" action="/signup" method="POST" novalidate>
+            <div class="form-control">
+                <label for="username">Username(*)</label>
+                <input 
+                class="<%= validationErrors.find(e => e.param === 'username') ? 'invalid' : '' %>"
+                type="username" 
+                name="username"  
+                placeholder="Type your username" 
+                id="username"
+                value="<%= oldInput.username %>">
+                <% if (validationErrors.find(e => e.param === 'username')) { %>
+                    <span class="label danger">ERROR ON USERNAME</span>
+                <% } %>
+            </div>
+           
+            <div class="form-control">
+                <label for="first_name">First Name(*)</label>
+                <input
+                class="<%= validationErrors.find(e => e.param === 'first_name') ? 'invalid' : '' %>" 
+                type="first_name" 
+                name="first_name" 
+                placeholder="Type your first name"" 
+                id="first_name"
+                value="<%= oldInput.first_name %>">
+                <% if (validationErrors.find(e => e.param === 'first_name')) { %>
+                    <span class="label danger">ERROR ON FIRST NAME</span>
+                <% } %>
+            </div>
+            <div class="form-control">
+                <label for="last_name">Last Name</label>
+                <input
+                class="<%= validationErrors.find(e => e.param === 'last_name') ? 'invalid' : '' %>"
+                type="last_name"
+                name="last_name" 
+                placeholder="Type your last name" 
+                id="last_name"
+                value="<%= oldInput.last_name %>">
+                <% if (validationErrors.find(e => e.param === 'last_name')) { %>
+                    <span class="label danger">ERROR ON LAST NAME</span>
+                <% } %>
+            </div>
+            
+            <div class="form-control">
+                <label for="email">E-mail(*)</label>
+                <input
+                class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                type="email" 
+                name="email" 
+                placeholder="Type your valid email" 
+                id="email" 
+                value="<%= oldInput.email %>">
+                <% if (validationErrors.find(e => e.param === 'email')) { %>
+                    <span class="label danger">ERROR ON EMAIL</span>
+                <% } %>
+            </div>
+            <div class="form-control">
+                <label for="phone">Phone Number</label>
+                <input
+                class="<%= validationErrors.find(e => e.param === 'phone') ? 'invalid' : '' %>"
+                type="phone" 
+                name="phone" 
+                placeholder="Type your valid phone number" 
+                id="phone"
+                value="<%= oldInput.phone %>">
+                <% if (validationErrors.find(e => e.param === 'phone')) { %>
+                    <span class="label danger">ERROR ON PHONE NUMBER</span>
+                <% } %>
+            </div>
+            <div class="form-control">
+                <label for="password">Password(*)</label>
+                <input
+                class="<%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
+                type="password" 
+                name="password" 
+                placeholder="Type your password" 
+                id="password"
+                value="<%= oldInput.password %>">
+                <% if (validationErrors.find(e => e.param === 'password')) { %>
+                    <span class="label danger">ERROR ON PASSWORD</span>
+                <% } %>
+            </div>
+            <div class="form-control">
+                <label for="confirmPassword">Confirm Password(*)</label>
+                <input
+                class="<%= validationErrors.find(e => e.param === 'confirmPassword') ? 'invalid' : '' %>" 
+                type="password" 
+                name="confirmPassword" 
+                placeholder="Confirm your password" 
+                id="confirmPassword"
+                value="<%= oldInput.confirmPassword %>">
+                <% if (validationErrors.find(e => e.param === 'confirmPassword')) { %>
+                    <span class="label danger">ERROR ON CONFIRM PASSWORD</span>
+                <% } %>
+            </div>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
+           <center><b>Reminder:</b> <i>Required Field(*) Needed Before Registeration</i></center>
+           &emsp;
+           <center> <button class="btn" type="submit">Complete Registeration</button></center>
+            <!-- <div class="form-control">
+                <label for="age">Age</label>
+                <input type="number" name="age" id="age"step="1" value="age">
+
+            </div class="gender-control">
+            </div>
+            <div class="ender-control">
+                <label for="gender">Gender(Optional)</label>
+                // https://stackoverflow.com/questions/22406020/javascript-gender-validation -->
+                <!-- <input type="radio" name="gender" id="gender" value="Male" >Male
+                <input type="radio" name="gender" id="gender" value="Female">Female
+                <input type="radio" name="gender" id="gender" value="Other">Other -->
+                <!-- <input type="button" onclick="validateGender()" value="validate"/> -->
+                <!-- <input type="gender" name="gender" id="gender"> Other 
+            </div> -->
+        </form>
+    </main>
+<%- include('../includes/end.ejs') %>
