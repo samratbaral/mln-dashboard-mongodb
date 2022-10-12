@@ -2,22 +2,23 @@
 # # for more about ignoring files.
 
 # # dependencies
-# node_modules/
+node_modules/
 
 # # testing
 
 # # Editors production
-# .vscode/
+.vscode/
 
 # # misc
-# .prettierrc
-# __pycache__/
+.prettierrc
+__pycache__/
 
 # # debug
 # npm-debug.log*
 
 # # local env files
-# .venv/
+.venv/
 
 # # vercel
 # package-lock.json
+# node_modules
