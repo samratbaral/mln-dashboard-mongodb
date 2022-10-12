@@ -11,7 +11,7 @@
 1. Clone this repository and install the dependencies:
 
    ```bash
-   git clone https://github.com/samratbaral/mln-dashboard
+   git clone https://github.com/samratbaral/mln-dashboard-mongodb
    cd  mln-dashboard
    npm install
    node app.js
