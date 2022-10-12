@@ -10,11 +10,11 @@
 
         <h1>Thank you for visiting MLN Dashboard!</h1>
         <% if (errorMessage) { %>
-            <span class="label warning"> E R R O R
+            <span class="label danger"> W A R N I N G <center>ERROR MESSAGE</center>
                 <div class="user-message user-message--error">
                     <center><%= errorMessage %></center>
                 </div>
-            </span>
+           </span>
         <% } %>
 
         <form class="login-form" action="/delete-user" method="POST">
@@ -27,6 +27,9 @@
                 placeholder="Type your username" 
                 id="username"
                 value="<%= oldInput.username %>">
+                <% if (validationErrors.find(e => e.param === 'username')) { %>
+                    <span class="label danger">ERROR ON USERNAME</span>
+                <% } %
             </div>
             <div class="form-control">
                 <label for="password">Password</label>
@@ -37,6 +40,9 @@
                 placeholder="Type your password" 
                 id="password"
                 value="<%= oldInput.password %>">
+                <% if (validationErrors.find(e => e.param === 'password')) { %>
+                    <span class="label danger">ERROR ON PASSWORD</span>
+                <% } %
             </div>
             <div class="form-control">
                 <label for="confirmPassword">Confirm Password</label>
@@ -47,6 +53,9 @@
                 placeholder="Confirm your password" 
                 id="confirmPassword"
                 value="<%= oldInput.confirmPassword %>">
+                <% if (validationErrors.find(e => e.param === 'confirmPassword')) { %>
+                    <span class="label danger">ERROR ON CONFIRM PASSWORD</span>
+                <% } %
             </div>
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <button class="btn" type="submit">Delete User</button>

@@ -9,8 +9,7 @@
     <main>
         <!-- <img src="/Public/image/favicon.png" width="150" height="100"> -->
         <% if (errorMessage) { %>
-            <span class="label danger"> W A R N I N G
-                <div class="user-message user-message--error">
+            <span class="label danger"> W A R N I N G <center>ERROR MESSAGE</center>                <div class="user-message user-message--error">
                     <center><%= errorMessage %></center>
                 </div>
             </span>
@@ -45,6 +44,9 @@
                 placeholder="Type your username" 
                 id="username"
                 value="<%= oldInput.username %>">
+                <% if (validationErrors.find(e => e.param === 'username')) { %>
+                    <span class="label danger">ERROR ON USERNAME</span>
+                <% } %
             </div>
             <div class="form-control">
                 <label for="password">Password</label>
@@ -55,6 +57,9 @@
                 placeholder="Type your password" 
                 id="password"
                 value="<%= oldInput.password %>">
+                <% if (validationErrors.find(e => e.param === 'password')) { %>
+                    <span class="label danger">ERROR ON PASSWORD</span>
+                <% } %
             </div>
             <div>
                 <a href="/reset">Reset Password</a>
