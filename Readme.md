@@ -4,15 +4,15 @@
 
 ## Getting Started
 
-Please see the [Getting Started](/Documents/gettingstarted.md) section for instructions on how to get started with this project.
+Please see the [Getting Started](/Documents/Documents-App/gettingstarted.md) section for instructions on how to get started with this project.
 
 ## Documentation
 
-Please see the [Documents](https://github.com/samratbaral/mln-dashboard-mongodb/tree/master/Documents) directory for documentation.
+Please see the [Summary](/Documents/Documents-App/summary.md) directory for documentation.
 
 ## Contributing
 
-Please see our [Contributing Guide](Readme.md) for more information. If you have any questions, please contact me `samratbaral.sb [at] gmail [dot] com`.
+Please see our [Contributing Guide](README.md) for more information. If you have any questions, please contact me `samratbaral.sb [at] gmail [dot] com`.
 
 ## Dev notes
 
