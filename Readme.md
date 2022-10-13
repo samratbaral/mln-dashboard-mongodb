@@ -8,7 +8,7 @@ Please see the [Getting Started](/Documents/Documents-App/gettingstarted.md) sec
 
 ## Documentation
 
-Please see the [Summary](/Documents/Documents-App/summary.md) directory for documentation.
+Please see the [Summary](/Documents/Documents-App/summary.md) of directory for documentation.
 
 ## Contributing
 
