@@ -1,8 +1,6 @@
 const crypto = require("crypto");
 const Ismail = require("isemail");
-
 const bcrypt = require("bcryptjs");
-const User = require("../Models/user");
 const nodemailer = require("nodemailer");
 const { validationResult } = require("express-validator");
 const validator = require("email-validator");
@@ -10,6 +8,8 @@ const mkdirp = require("mkdirp");
 const rimraf = require("rimraf");
 const { mkdir } = require("fs");
 const { error } = require("console");
+
+const User = require("../Models/user");
 
 exports.getLogin = (req, res, next) => {
   let message = req.flash("error");

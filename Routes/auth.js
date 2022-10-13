@@ -1,10 +1,9 @@
 const express = require("express");
 const { check, body } = require("express-validator");
+const router = express.Router();
 
 const authController = require("../Controllers/auth");
 const User = require("../Models/user");
-
-const router = express.Router();
 
 router.post("/homepage", authController.postHomepage);
 router.get("/homepage", authController.getHomepage);
@@ -26,10 +25,10 @@ router.post(
           }
         });
       }),
-      body("password", "Password has to be valid.")
+    body("password", "Password has to be valid.")
       .isLength({ min: 8 })
       .isAlphanumeric()
-      .trim()
+      .trim(),
   ],
   authController.postLogin
 );

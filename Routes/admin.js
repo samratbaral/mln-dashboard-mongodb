@@ -1,12 +1,10 @@
 const path = require("path");
-
 const express = require("express");
 const { body } = require("express-validator");
+const router = express.Router();
 
 const adminController = require("../Controllers/admin");
 const isAuth = require("../Middleware/is-auth");
-
-const router = express.Router();
 
 //we send this to flask
 router.post(

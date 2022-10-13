@@ -1,11 +1,8 @@
 const mongoose = require("mongoose");
-
-const fileHelper = require("../Utilities/file");
-
 const { validationalResult } = require("express-validator");
 
+const fileHelper = require("../Utilities/file");
 const GenFiles = require("../Models/generation");
-
 // add-product > add-admin
 // products > admins
 // edit-product > edit-admin
