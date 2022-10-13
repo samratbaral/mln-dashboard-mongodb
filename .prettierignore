@@ -3,7 +3,7 @@
 # # Code build folder
 
 # # Dependency directories
-# node_modules
+node_modules
 
 # # TypeScript v1 declaration files
 

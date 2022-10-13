@@ -14,11 +14,22 @@ router.get("/login", authController.getLogin);
 router.post(
   "/login",
   [
-    body("username").isString().withMessage("Please enter a valid username."),
-    body("password", "Password has to be valid.")
-      .isLength({ min: 5 })
+    check("username")
+      .isString()
+      .withMessage("Please enter a valid username.")
+      .custom((value, { req }) => {
+        return User.findOne({ username: value }).then((userDoc) => {
+          if (!userDoc) {
+            return Promise.reject(
+              "Username isn't register, please register first."
+            );
+          }
+        });
+      }),
+      body("password", "Password has to be valid.")
+      .isLength({ min: 8 })
       .isAlphanumeric()
-      .trim(),
+      .trim()
   ],
   authController.postLogin
 );

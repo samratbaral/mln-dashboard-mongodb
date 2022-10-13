@@ -9,6 +9,7 @@ const validator = require("email-validator");
 const mkdirp = require("mkdirp");
 const rimraf = require("rimraf");
 const { mkdir } = require("fs");
+const { error } = require("console");
 
 exports.getLogin = (req, res, next) => {
   let message = req.flash("error");
@@ -159,7 +160,7 @@ exports.postLogin = (req, res, next) => {
         return res.status(422).render("auth/login", {
           path: "/login",
           pageTitle: "Login",
-          errorMessage: "Invalid Username or Password.",
+          errorMessage: "Username isn't register, please register first.",
           sucessMessage: "Welcome User to MLN Dashboard.",
           oldInput: {
             username: username,
@@ -171,19 +172,23 @@ exports.postLogin = (req, res, next) => {
       bcrypt
         .compare(password, user.password)
         .then((doMatch) => {
+          if (!doMatch) {
+            return Promise.reject(
+              "Invalid Password, please try again!."
+            );
+          }
           if (doMatch) {
             req.session.isLoggedIn = true;
             req.session.user = user;
             return req.session.save((err) => {
               console.log(err);
-              res.redirect("/admin");
+              res.redirect("/viewfile");
             });
           }
           return res.status(422).render("auth/login", {
             path: "/login",
             pageTitle: "Login",
-            errorMessage: "Invalid Username or Password.",
-            sucessMessage: "Welcome User to MLN Dashboard.",
+            errorMessage: "Invalid Password, please try again!.",
             oldInput: {
               username: username,
               password: password,
