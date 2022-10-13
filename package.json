@@ -4,14 +4,16 @@
   "description": "IT-Lab (MLN-Dashboard) [adding GUI Functionality]",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js",
-    "start-server": "node app.js",
-    "format": "prettier \"**/*.{js,ejs,py,css,html,json}\" --write"
+    "test": "ava",
+    "start": "nodemon app.js && ava",
+    "start-server": "node app.js ",
+    "format": "prettier \"**/*.{js,ejs,py,css,html,json}\" --write",
+    "dev": "concurrently --kill others \"python3 app.py\"  \"npm test\" \"npm start\"  "
   },
   "author": "Samrat Baral",
   "license": "ISC",
   "dependencies": {
+    "async": "^3.2.4",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
     "connect-flash": "^0.1.1",
@@ -41,6 +43,8 @@
     "sequelize": "^6.21.3"
   },
   "devDependencies": {
+    "ava": "^4.3.3",
+    "concurrently": "^7.4.0",
     "nodemon": "^2.0.20",
     "prettier": "2.7.1"
   }

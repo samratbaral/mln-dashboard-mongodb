@@ -102,30 +102,6 @@ app.use((req, res, next) => {
       next(new Error(err));
     });
 });
-/*
-
-  const express = require('express')
-  const request = require('request');
-  
-  app = express();
-  const PORT = 3000;
-  
-  app.get('/admin', function(req, res) {
-      request('http://127.0.0.1:5000/flask', function (error, response, body) {
-          console.error('error:', error); // Print the error
-          console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-          console.log('body:', body); // Print the data received
-          res.send(body); //Display the response on the website
-        });      
-  });
-  
-  app.listen(PORT, function (){ 
-      console.log('Listening on Port 3000');
-  });  
-*/
-
-//Routers
-// /admin = username
 app.use("/admin", adminRoutes);
 
 app.use(mlnRoutes);
@@ -153,29 +129,3 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
-
-/***********/
-// const PORT = 3000;
-// app.get('/home', function(req, res) {
-//   request('http://127.0.0.1:5000/flask', function (error, response, body) {
-//       console.error('error:', error); // Print the error
-//       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-//       console.log('body:', body); // Print the data received
-//       res.send(body); //Display the response on the website
-//     });
-// });
-
-// app.listen(PORT, function (){
-//   console.log('Listening on Port 3000');
-// });
-/***********/
-
-// mongoose
-// .connect(MONGODB_URI)
-// .then(result => {
-//     app.listen(3001);
-//     console.log('Connected to MongoDB - Backup  http://localhost:3001/login');
-// })
-// .catch(err =>{
-//     console.log(err);
-// });

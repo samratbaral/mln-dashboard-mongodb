@@ -12,7 +12,7 @@ Please see the [Summary](/Documents/Documents-App/summary.md) directory for docu
 
 ## Contributing
 
-Please see our [Contributing Guide](README.md) for more information. If you have any questions, please contact me `samratbaral.sb [at] gmail [dot] com`.
+Please see our [Contributing Guide](/CONTRIBUTING) for more information. If you have any questions, please contact me `samratbaral.sb [at] gmail [dot] com`.
 
 ## Dev notes
 
@@ -22,7 +22,7 @@ Need to Update/Upgrade:
 - get started with organization page
 - create organization page (accessible from account settings)
 - account settings.
-- database working need privelege on the database for network IP address.
+- database working need privilege on the database for network IP address.
 - make graphql server schema, endpoint, and resolvers
 - backend/api documentation
 
@@ -33,9 +33,9 @@ TODO: sidebar have two tabs visible for all research tab.
 
 TODO: Research tab: after log-in
 
-- [ ] User direcotory integration with flask app.
+- [ ] User directory integration with flask app.
 - [ ] Layer generation config file integration with flask app.
-- [ ] Analysis file intergration with flask app.
+- [ ] Analysis file integration with flask app.
 - [ ] Visualization integration with flask app.
 
 Later TODO's:
