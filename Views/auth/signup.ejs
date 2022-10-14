@@ -6,15 +6,15 @@
     <%- include('../includes/navigation.ejs') %>
 
     <main>
-        <% if (errorMessage) { %>
+        <!-- <% if (errorMessage) { %>
             <span class="label danger"> W A R N I N G <center>ERROR MESSAGE</center>
                 <div class="user-message user-message--error">
                     <center><%= errorMessage %></center>
                 </div>
-           </span>
-        <% } %>
+        </span>
+        <% } %> -->
 
-       <center><h1>Register to MLN Dashboard </h1></center> 
+        <center><h1>Register to MLN Dashboard </h1></center> 
         <!-- <h3> <center>Register to MLN Dashboard</center>  </h3> -->
 
         <form class="login-form" action="/signup" method="POST" novalidate>
@@ -24,52 +24,93 @@
                 class="<%= validationErrors.find(e => e.param === 'username') ? 'invalid' : '' %>"
                 type="username" 
                 name="username"  
-                placeholder="Type your username" 
+                placeholder="username" 
                 id="username"
                 value="<%= oldInput.username %>">
-                <% if (validationErrors.find(e => e.param === 'username')) { %>
-                    <span class="label danger">ERROR ON USERNAME</span>
+                <!-- <% if (validationErrors.find(e => e.param === 'username'))  { %>
+                    <span class="label danger">USERNAME REGISTERED ALREADY</span>
+                <% } else if (oldInput.username) { %>
+                    <span class="label success">VALID USERNAME</span>
+                <% } else { %>
+                    <span class="label info">USERNAME SHOULD BE UNIQUE TO USER</span>
+                <% } %> -->
+
+                <% if (validationErrors.find(e => e.param === 'username'))  { %>
+                    <span class="label danger">REGISTERED OR INVALID</span>
+                <% } else if (!(oldInput.username)) { %>
+                    <span class="label info"> ENTER UNREGISTERED USERNAME</span>
+                <% } else if (oldInput.username) { %>
+                    <span class="label success">VALID USERNAME</span>
+                <% } else { %>
+                    <span class="label warning">INVALID USERNAME INPUT</span>
                 <% } %>
             </div>
-           
             <div class="form-control">
                 <label for="first_name">First Name(*)</label>
                 <input
                 class="<%= validationErrors.find(e => e.param === 'first_name') ? 'invalid' : '' %>" 
                 type="first_name" 
                 name="first_name" 
-                placeholder="Type your first name"" 
+                placeholder="first name"" 
                 id="first_name"
                 value="<%= oldInput.first_name %>">
-                <% if (validationErrors.find(e => e.param === 'first_name')) { %>
+                <!-- <% if (validationErrors.find(e => e.param === 'first_name')) { %>
                     <span class="label danger">ERROR ON FIRST NAME</span>
+                <% } %> -->
+
+                <% if (validationErrors.find(e => e.param === 'first_name'))  { %>
+                    <span class="label danger">INVALID FIRST NAME</span>
+                <% } else if (!(oldInput.first_name)) { %>
+                    <span class="label info"> ENTER FIRST NAME</span>
+                <% } else if (oldInput.first_name) { %>
+                    <span class="label success">VALID FIRST NAME</span>
+                <% } else { %>
+                    <span class="label warning">INVALID FIRST NAME INPUT</span>
                 <% } %>
             </div>
             <div class="form-control">
-                <label for="last_name">Last Name</label>
+                <label for="last_name">Last Name(*)</label>
                 <input
                 class="<%= validationErrors.find(e => e.param === 'last_name') ? 'invalid' : '' %>"
                 type="last_name"
                 name="last_name" 
-                placeholder="Type your last name" 
+                placeholder="last name" 
                 id="last_name"
                 value="<%= oldInput.last_name %>">
-                <% if (validationErrors.find(e => e.param === 'last_name')) { %>
+                <!-- <% if (validationErrors.find(e => e.param === 'last_name')) { %>
                     <span class="label danger">ERROR ON LAST NAME</span>
+                <% } %> -->
+
+                <% if (validationErrors.find(e => e.param === 'last_name'))  { %>
+                    <span class="label danger">INVALID LAST NAME</span>
+                <% } else if (!(oldInput.last_name)) { %>
+                    <span class="label info"> ENTER LAST NAME</span>
+                <% } else if (oldInput.last_name) { %>
+                    <span class="label success">VALID LAST NAME</span>
+                <% } else { %>
+                    <span class="label warning">INVALID LAST NAME INPUT</span>
                 <% } %>
             </div>
-            
             <div class="form-control">
                 <label for="email">E-mail(*)</label>
                 <input
                 class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
                 type="email" 
                 name="email" 
-                placeholder="Type your valid email" 
+                placeholder="user@address.com" 
                 id="email" 
                 value="<%= oldInput.email %>">
-                <% if (validationErrors.find(e => e.param === 'email')) { %>
+                <!-- <% if (validationErrors.find(e => e.param === 'email')) { %>
                     <span class="label danger">ERROR ON EMAIL</span>
+                <% } %> -->
+                <% if (validationErrors.find(e => e.param === 'email'))  { %>
+                    <span class="label danger">REGISTERED OR INVALID EMAIL</span>
+                <% } else if (!(oldInput.email)) { %>
+                    <span class="label info">ENTER UNREGISTERED EMAIL</span>
+                <% } else if (oldInput.email) { %>
+                    <span class="label success">VALID EMAIL</span>
+                <% } else { %>
+                    <span class="label warning">INVALID EMAIL INPUT</span>
                 <% } %>
             </div>
             <div class="form-control">
@@ -78,11 +119,21 @@
                 class="<%= validationErrors.find(e => e.param === 'phone') ? 'invalid' : '' %>"
                 type="phone" 
                 name="phone" 
-                placeholder="Type your valid phone number" 
+                placeholder="XXX XXX XXXX" 
                 id="phone"
                 value="<%= oldInput.phone %>">
-                <% if (validationErrors.find(e => e.param === 'phone')) { %>
+                <!-- <% if (validationErrors.find(e => e.param === 'phone')) { %>
                     <span class="label danger">ERROR ON PHONE NUMBER</span>
+                <% } %> -->
+
+                <% if (validationErrors.find(e => e.param === 'phone'))  { %>
+                    <span class="label danger">PHONE NUMBER IS INVALID</span>
+                <% } else if (!(oldInput.phone)) { %>
+                    <span class="label info">ENTER 10 DIGIT PHONE NUMBER</span>
+                <% } else if (oldInput.phone) { %>
+                    <span class="label success">VALID PHONE NUMBER</span>
+                <% } else { %>
+                    <span class="label warning">INVALID PHONE NUMBER INPUT</span>
                 <% } %>
             </div>
             <div class="form-control">
@@ -91,11 +142,21 @@
                 class="<%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
                 type="password" 
                 name="password" 
-                placeholder="Type your password" 
+                placeholder="At least 8 character long" 
                 id="password"
                 value="<%= oldInput.password %>">
-                <% if (validationErrors.find(e => e.param === 'password')) { %>
+                <!-- <% if (validationErrors.find(e => e.param === 'password')) { %>
                     <span class="label danger">ERROR ON PASSWORD</span>
+                <% } %> -->
+
+                <% if (validationErrors.find(e => e.param === 'password'))  { %>
+                    <span class="label danger">INVALID PASSWORD</span>
+                <% } else if (!(oldInput.password)) { %>
+                    <span class="label info">ENTER PASSWORD ATLEAST 8 CHARACTER</span>
+                <% } else if (oldInput.password) { %>
+                    <span class="label success">VALID PASSWORD</span>
+                <% } else { %>
+                    <span class="label warning">INVALID PASSWORD INPUT</span>
                 <% } %>
             </div>
             <div class="form-control">
@@ -104,18 +165,27 @@
                 class="<%= validationErrors.find(e => e.param === 'confirmPassword') ? 'invalid' : '' %>" 
                 type="password" 
                 name="confirmPassword" 
-                placeholder="Confirm your password" 
+                placeholder="Password should match" 
                 id="confirmPassword"
                 value="<%= oldInput.confirmPassword %>">
-                <% if (validationErrors.find(e => e.param === 'confirmPassword')) { %>
+                <!-- <% if (validationErrors.find(e => e.param === 'confirmPassword')) { %>
                     <span class="label danger">ERROR ON CONFIRM PASSWORD</span>
+                <% } %> -->
+
+                <% if (validationErrors.find(e => e.param === 'confirmPassword'))  { %>
+                    <span class="label danger">PASSWORD DOESN'T MATCH</span>
+                <% } else if (!(oldInput.confirmPassword)) { %>
+                    <span class="label info">PASSWORD SHOULD MATCH</span>
+                <% } else if (oldInput.confirmPassword) { %>
+                    <span class="label success">PASSWORD MATCH</span>
+                <% } else { %>
+                    <span class="label warning">INVALID PASSWORD INPUT</span>
                 <% } %>
             </div>
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-
-           <center><b>Reminder:</b> <i>Required Field(*) Needed Before Registeration</i></center>
-           &emsp;
-           <center> <button class="btn" type="submit">Complete Registeration</button></center>
+            <center><b>Reminder:</b> <i>Required Field(*) Needed Before Registeration</i></center>
+            &emsp;
+            <center> <button class="btn" type="submit">Complete Registeration</button></center>
             <!-- <div class="form-control">
                 <label for="age">Age</label>
                 <input type="number" name="age" id="age"step="1" value="age">

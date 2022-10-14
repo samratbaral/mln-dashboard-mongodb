@@ -48,11 +48,18 @@ router.post(
               "Username exits already, please pick a different username."
             );
           }
+          else{
+            return Promise.reject(
+              "Username was empty, please pick a different username."
+            );
+          }
+
         });
       }),
     check("email")
       .isEmail()
       .withMessage("Please enter a valid email.")
+      .normalizeEmail()
       .custom((value, { req }) => {
         return User.findOne({ email: value }).then((userDoc) => {
           if (userDoc) {
@@ -62,7 +69,29 @@ router.post(
           }
         });
       })
-      .normalizeEmail(),
+      ,
+      body(
+        "phone",
+        "Please enter ###-###-#### 10 phone numbers only."
+      )
+        .isLength({ min: 10 })
+        .isNumeric()
+        .custom((value, { req }) => {
+          return User.findOne({ username: value }).then((userDoc) => {
+            if (userDoc) {
+              return Promise.reject(
+                "Username exits already, please pick a different username."
+              );
+            }
+            else{
+              return Promise.reject(
+                "Username was empty, please pick a different username."
+              );
+            }
+  
+          });
+        })
+        ,
     body(
       "password",
       "Please enter a password with only numbers and text and at least 8 characters."
