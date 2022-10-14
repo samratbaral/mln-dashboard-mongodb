@@ -23,6 +23,11 @@ router.post(
               "Username isn't register, please register first."
             );
           }
+          if (userDoc == null) {
+            return Promise.resolve(
+              "Username is empty, please pick a different username."
+            );
+          }
         });
       }),
     body("password", "Password has to be valid.")
@@ -48,12 +53,11 @@ router.post(
               "Username exits already, please pick a different username."
             );
           }
-          else{
-            return Promise.reject(
-              "Username was empty, please pick a different username."
+          if (userDoc == null) {
+            return Promise.resolve(
+              "Username is empty, please pick a different username."
             );
           }
-
         });
       }),
     check("email")
@@ -68,30 +72,23 @@ router.post(
             );
           }
         });
+      }),
+    body("phone")
+      .isLength({
+        min: 10
       })
-      ,
-      body(
-        "phone",
-        "Please enter ###-###-#### 10 phone numbers only."
-      )
-        .isLength({ min: 10 })
-        .isNumeric()
-        .custom((value, { req }) => {
-          return User.findOne({ username: value }).then((userDoc) => {
-            if (userDoc) {
-              return Promise.reject(
-                "Username exits already, please pick a different username."
-              );
-            }
-            else{
-              return Promise.reject(
-                "Username was empty, please pick a different username."
-              );
-            }
-  
-          });
-        })
-        ,
+      .withMessage("Please enter a valid phone length.")
+      .custom((value, { req }) => {
+        if (!value) {
+          return Promise.reject(
+            "Please enter ###-###-#### 10 phone numbers only.[2]"
+          );
+        } else {
+          return Promise.resolve(
+            "Please enter ###-###-#### 10 phone numbers only.[3]"
+          );
+        }
+      }),
     body(
       "password",
       "Please enter a password with only numbers and text and at least 8 characters."

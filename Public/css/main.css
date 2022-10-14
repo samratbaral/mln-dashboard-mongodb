@@ -67,22 +67,23 @@ form {
   padding: 0;
 }
 */
-#locald{
-  background-color:white;
+#locald {
+  background-color: white;
   padding: 10px;
 }
 
-#left{
-  width:35%;
-  float:left;
-  background-color:lightgoldenrodyellow;
-  height:100%
+#left {
+  width: 35%;
+  float: left;
+  background-color: lightgoldenrodyellow;
+  height: 100%
 }
-#right{
-  width:65%;
-  float:right;
-  background-color:white;
-  height:100%
+
+#right {
+  width: 65%;
+  float: right;
+  background-color: white;
+  height: 100%
 }
 
 .main-header__item a,

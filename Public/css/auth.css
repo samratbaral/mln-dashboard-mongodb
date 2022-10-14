@@ -1,26 +1,48 @@
 .login-form {
-    width: 20rem;
-    max-width: 90%;
-    margin: auto;
-    display: block;
-  }
-.label {
-    width: 100rem;
-    max-width: 100%;
-    margin: auto;
-    display: inline-block;
-    color: white;
-    padding: 1px;
+  width: 20rem;
+  max-width: 90%;
+  margin: auto;
+  display: block;
 }
 
-.btn{font-size: 20px;}
+.label {
+  width: 100rem;
+  max-width: 100%;
+  margin: auto;
+  display: inline-block;
+  color: white;
+  padding: 1px;
+}
+.btn {
+  font-size: 20px;
+}
 
+/* Green */
+.success {
+  background-color: #04AA6D;
+}
 
-.success {background-color: #04AA6D;} /* Green */
-.info {background-color: #2196F3;} /* Blue */
-.warning {background-color: #ff9800;} /* Orange */
-.danger {background-color: #f44336;} /* Red */ 
-.other {background-color: #e7e7e7; color: black;} /* Gray */
+/* Blue */
+.info {
+  background-color: #2196F3;
+}
+
+/* Orange */
+.warning {
+  background-color: #ff9800;
+}
+
+/* Red */
+.danger {
+  background-color: #f44336;
+}
+
+/* Gray */
+.other {
+  background-color: #e7e7e7;
+  color: black;
+}
+
 
 /*
 <span class="label success">Success</span>

@@ -1,6 +1,7 @@
 .form-control {
   margin: 1rem 0;
 }
+
 .form-control label,
 .form-control input,
 .form-control textarea {
@@ -23,9 +24,10 @@
 
 .form-control input.invalid,
 .form-control textarea.invalid {
-  border-color:  red;
+  border-color: red;
   margin-bottom: 10px;
 }
+
 /* .gender-control{
   margin: 1 rem 2;
   margin: auto;

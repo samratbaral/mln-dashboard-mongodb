@@ -173,8 +173,19 @@ exports.postLogin = (req, res, next) => {
         .compare(password, user.password)
         .then((doMatch) => {
           if (!doMatch) {
+            custom((value, { req }) => {
+              if (value !== req.body.password) {
+                throw new Error("Passwords have to match, please recheck again!");
+              }
+              return true;
+            });
             return Promise.reject(
               "Invalid Password, please try again!."
+            );
+          }
+          if (password===null && doMatch === null) {
+            return Promise.resolve(
+              "Password is empty, please try again!."
             );
           }
           if (doMatch) {
@@ -185,16 +196,19 @@ exports.postLogin = (req, res, next) => {
               res.redirect("/viewfile");
             });
           }
-          return res.status(422).render("auth/login", {
-            path: "/login",
-            pageTitle: "Login",
-            errorMessage: "Invalid Password, please try again!.",
-            oldInput: {
-              username: username,
-              password: password,
-            },
-            validationErrors: [],
-          });
+          else{
+            return res.status(422).render("auth/login", {
+              path: "/login",
+              pageTitle: "Login",
+              errorMessage: "Invalid Password, please try again!.",
+              oldInput: {
+                username: username,
+                password: password,
+              },
+              validationErrors: [],
+            });
+          }
+          
         })
         .catch((err) => {
           console.log(err);
