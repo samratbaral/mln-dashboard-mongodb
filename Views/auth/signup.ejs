@@ -15,7 +15,6 @@
         <% } %> -->
 
         <center><h1>Register to MLN Dashboard </h1></center> 
-        <!-- <h3> <center>Register to MLN Dashboard</center>  </h3> -->
 
         <form class="login-form" action="/signup" method="POST" novalidate>
             <div class="form-control">
@@ -27,14 +26,6 @@
                 placeholder="username" 
                 id="username"
                 value="<%= oldInput.username %>">
-                <!-- <% if (validationErrors.find(e => e.param === 'username'))  { %>
-                    <span class="label danger">USERNAME REGISTERED ALREADY</span>
-                <% } else if (oldInput.username) { %>
-                    <span class="label success">VALID USERNAME</span>
-                <% } else { %>
-                    <span class="label info">USERNAME SHOULD BE UNIQUE TO USER</span>
-                <% } %> -->
-
                 <% if (validationErrors.find(e => e.param === 'username'))  { %>
                     <span class="label danger">REGISTERED OR INVALID</span>
                 <% } else if (!(oldInput.username)) { %>
@@ -54,10 +45,6 @@
                 placeholder="first name"" 
                 id="first_name"
                 value="<%= oldInput.first_name %>">
-                <!-- <% if (validationErrors.find(e => e.param === 'first_name')) { %>
-                    <span class="label danger">ERROR ON FIRST NAME</span>
-                <% } %> -->
-
                 <% if (validationErrors.find(e => e.param === 'first_name'))  { %>
                     <span class="label danger">INVALID FIRST NAME</span>
                 <% } else if (!(oldInput.first_name)) { %>
@@ -77,10 +64,6 @@
                 placeholder="last name" 
                 id="last_name"
                 value="<%= oldInput.last_name %>">
-                <!-- <% if (validationErrors.find(e => e.param === 'last_name')) { %>
-                    <span class="label danger">ERROR ON LAST NAME</span>
-                <% } %> -->
-
                 <% if (validationErrors.find(e => e.param === 'last_name'))  { %>
                     <span class="label danger">INVALID LAST NAME</span>
                 <% } else if (!(oldInput.last_name)) { %>
@@ -100,9 +83,6 @@
                 placeholder="user@address.com" 
                 id="email" 
                 value="<%= oldInput.email %>">
-                <!-- <% if (validationErrors.find(e => e.param === 'email')) { %>
-                    <span class="label danger">ERROR ON EMAIL</span>
-                <% } %> -->
                 <% if (validationErrors.find(e => e.param === 'email'))  { %>
                     <span class="label danger">REGISTERED OR INVALID EMAIL</span>
                 <% } else if (!(oldInput.email)) { %>
@@ -122,10 +102,6 @@
                 placeholder="XXX XXX XXXX" 
                 id="phone"
                 value="<%= oldInput.phone %>">
-                <!-- <% if (validationErrors.find(e => e.param === 'phone')) { %>
-                    <span class="label danger">ERROR ON PHONE NUMBER</span>
-                <% } %> -->
-
                 <% if (validationErrors.find(e => e.param === 'phone'))  { %>
                     <span class="label danger">PHONE NUMBER IS INVALID</span>
                 <% } else if (!(oldInput.phone)) { %>
@@ -145,10 +121,6 @@
                 placeholder="At least 8 character long" 
                 id="password"
                 value="<%= oldInput.password %>">
-                <!-- <% if (validationErrors.find(e => e.param === 'password')) { %>
-                    <span class="label danger">ERROR ON PASSWORD</span>
-                <% } %> -->
-
                 <% if (validationErrors.find(e => e.param === 'password'))  { %>
                     <span class="label danger">INVALID PASSWORD</span>
                 <% } else if (!(oldInput.password)) { %>
@@ -168,10 +140,6 @@
                 placeholder="Password should match" 
                 id="confirmPassword"
                 value="<%= oldInput.confirmPassword %>">
-                <!-- <% if (validationErrors.find(e => e.param === 'confirmPassword')) { %>
-                    <span class="label danger">ERROR ON CONFIRM PASSWORD</span>
-                <% } %> -->
-
                 <% if (validationErrors.find(e => e.param === 'confirmPassword'))  { %>
                     <span class="label danger">PASSWORD DOESN'T MATCH</span>
                 <% } else if (!(oldInput.confirmPassword)) { %>
