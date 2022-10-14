@@ -60,7 +60,7 @@ router.post(
           }
         });
       }),
-    check("email")
+    check("email") //change check -> body if not wanna check if exist email exist in some other account.& remove custom search
       .isEmail()
       .withMessage("Please enter a valid email.")
       .normalizeEmail()
@@ -74,21 +74,27 @@ router.post(
         });
       }),
     body("phone")
-      .isLength({
-        min: 10
-      })
+      .isLength({ min: 10 })
       .withMessage("Please enter a valid phone length.")
-      .custom((value, { req }) => {
-        if (!value) {
-          return Promise.reject(
-            "Please enter ###-###-#### 10 phone numbers only.[2]"
-          );
-        } else {
-          return Promise.resolve(
-            "Please enter ###-###-#### 10 phone numbers only.[3]"
-          );
-        }
-      }),
+      // .custom((value, { req }) => {
+      //   const tel = "000-000-00000000";
+      //   value = tel;
+      //   req.body.phone = value;
+      //   if (value !== req.body.phone) {
+      //     throw new Error("entered ###-###-#### 10 phone numbers");
+      //   }
+      //   return true;
+      //   // else if (value) {
+      //   //   return Promise.resolve(
+      //   //     "automatically enter 000-000-0000 10 phone numbers added."
+      //   //   );
+      //   // } else {
+      //   //   return Promise.reject(
+      //   //     "Please enter ###-###-#### 10 phone numbers only."
+      //   //   );
+      //   // }
+      // })
+      ,
     body(
       "password",
       "Please enter a password with only numbers and text and at least 8 characters."

@@ -60,7 +60,7 @@ exports.getSignup = (req, res, next) => {
       first_name: "",
       last_name: "",
       email: "",
-      phone: "",
+      phone: "000-000-0000",
       password: "",
       confirmPassword: "",
     },
