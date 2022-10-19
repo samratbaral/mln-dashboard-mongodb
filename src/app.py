@@ -9,8 +9,8 @@ app = Flask(__name__)
 @app.route('/flask', methods=['GET'])
 def index():
     cwd = {
-        "cwd": os.getcwd(),
-        "files": subprocess.check_output('ls', shell=True).decode('utf-8')}
+        "DIRECTORY": os.getcwd(),
+        "FILES": subprocess.check_output('ls', shell=True).decode('utf-8')}
     return cwd
 
 

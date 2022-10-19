@@ -6,9 +6,9 @@ const express = require("express");
 const request = require("request");
 const { validationResult } = require("express-validator");
 
-const Bison = require('bison');
-const encode = Bison.encode;
-const decode = Bison.decode;
+const bison = require('bison');
+const encode = bison.encode;
+const decode = bison.decode;
 
 const GenFiles = require("../Models/generation");
 const Order = require("../Models/analysis");
@@ -49,6 +49,14 @@ exports.getViewFile = (req, res, next) => {
 
 exports.postViewFile = (req, res, next) => {
   console.log("jeeeeeee");
-  const body = req.body.body;
-  const errors = validationResult(req);
+  request("http://127.0.0.1:5000/flask", (error, response, body) => {
+    //console.log('error:',error);
+    //console.log('statusCode:', response && response.statusCode);
+    //console.log('body',body);
+    res.render("research/viewfile", {
+      path: "/viewfile",
+      pageTitle: "View Files",
+      jsonData: JSON.stringify(body)
+    });
+  });
 };
