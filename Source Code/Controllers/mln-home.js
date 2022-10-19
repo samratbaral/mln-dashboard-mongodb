@@ -6,6 +6,10 @@ const express = require("express");
 const request = require("request");
 const { validationResult } = require("express-validator");
 
+const Bison = require('bison');
+const encode = Bison.encode;
+const decode = Bison.decode;
+
 const GenFiles = require("../Models/generation");
 const Order = require("../Models/analysis");
 //const Backup = require('../Models/backup');
@@ -38,7 +42,7 @@ exports.getViewFile = (req, res, next) => {
     res.render("research/viewfile", {
       path: "/viewfile",
       pageTitle: "View Files",
-      jsonData: JSON.stringify(body),
+      jsonData: JSON.stringify(body)
     });
   });
 };

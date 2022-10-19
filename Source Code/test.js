@@ -1,11 +1,11 @@
 
 const test = require('ava')
 
-test('foo', t => {
+test('Test #1', t => {
 	t.pass();
 });
 
-test('bar', async t => {
+test('Test #2', async t => {
 	const bar = Promise.resolve('bar');
 	t.is(await bar, 'bar');
 });
