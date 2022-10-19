@@ -45,14 +45,12 @@ exports.getViewFile = (req, res, next) => {
       jsonData: JSON.stringify(body)
     });
   });
+
 };
 
 exports.postViewFile = (req, res, next) => {
   console.log("jeeeeeee");
   request("http://127.0.0.1:5000/flask", (error, response, body) => {
-    //console.log('error:',error);
-    //console.log('statusCode:', response && response.statusCode);
-    //console.log('body',body);
     res.render("research/viewfile", {
       path: "/viewfile",
       pageTitle: "View Files",

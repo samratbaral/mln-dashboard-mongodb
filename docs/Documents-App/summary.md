@@ -4,14 +4,14 @@ Code is organized under the following major files and directories:
 
 ```text
 |
-├── Documents: some papers that might be relevant for the project
+├── docs: some papers that might be relevant for the project
 |    |
 |    ├── Research: Relevant Research Paper
 |    └── Documents-App: documentation for us, future developers, and the community
 |       ├── gettingstarted.md: How to get Started with MLN Dashboard.
 |       └── summary.md: Understand the file structure and MLN Dashboard overall.
 |
-├── Source Code
+├── src
 |    |
 |    |── Controller: Main implementaion for get,post,fetch,delete goes here.
 |    |    |

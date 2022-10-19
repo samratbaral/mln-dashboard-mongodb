@@ -4,11 +4,11 @@
 
 ## Getting Started
 
-Please see the [Getting Started](/Documents/Documents-App/gettingstarted.md) section for instructions on how to get started with this project.
+Please see the [Getting Started](/docs/Documents-App/gettingstarted.md) section for instructions on how to get started with this project.
 
 ## Documentation
 
-Please see the [Summary](/Documents/Documents-App/summary.md/) of directory for documentation.
+Please see the [Summary](/docs/Documents-App/summary.md/) of directory for documentation.
 
 ## Contributing
 
