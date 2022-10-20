@@ -8,7 +8,8 @@ const mkdirp = require("mkdirp");
 const rimraf = require("rimraf");
 const { mkdir } = require("fs");
 const { error } = require("console");
-
+const fs = require('fs')
+const fse = require('fs-extra')
 const User = require("../Models/user");
 
 exports.getLogin = (req, res, next) => {
@@ -269,7 +270,7 @@ exports.postSignup = (req, res, next) => {
     })
     .then((result) => {
       res.redirect("/login");
-      mkdirp(username);
+      mkdirp(username)
       console.log("CREATE USER DIRECTORY FOLDER - [SUCESS]");
       //return transporter.sendMail({
       // to: email,

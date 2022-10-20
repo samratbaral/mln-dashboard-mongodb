@@ -1,6 +1,7 @@
 from flask import Flask
 import os
 import subprocess
+import json
 from flask import jsonify
 
 app = Flask(__name__)
@@ -10,8 +11,10 @@ app = Flask(__name__)
 def index():
     cwd = {
         "DIRECTORY": os.getcwd(),
-        "FILES": subprocess.check_output('ls', shell=True).decode('utf-8')}
-    return cwd
+        "FILES": subprocess.check_output('ls', shell=True).decode('utf-8').split('\n')}
+        
+
+    return json.dumps(cwd)
 
 
 if __name__ == "__main__":

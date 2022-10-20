@@ -5,22 +5,31 @@
 
     <body>
         <%- include('../includes/navigation.ejs') %>
-        <main>
+            <main>
                 <h2>File Manager</h2>
-                <h3>Current Directory (Local File System)</h3> 
-                
-                <p><%- jsonData %></p>            
-                    
-                    <form action="/viewflies" method="POST">
-                        
-                        <div id='left'>
-                            <h3>All File</h3>
-                        </div>
-                        
-                        <div id='right'>
-                            <h3>View File</h3> 
-                        </div>
-                    </form>
+                <h3>Current Directory (Local File System)</h3>
 
-        </main>
-        <%- include('../includes/end.ejs') %>
+
+                <p>
+                    <%- jsonData['DIRECTORY']%>
+                </p>
+
+                <form action="/viewflies" method="POST">
+
+                    <div id='left'>
+                        <h3>All File</h3>
+                        <% for(var i=0; i < jsonData['FILES'].length; i++) {%>
+                            <p>
+                                <%= jsonData['FILES'][i]%>
+                            </p>
+                            <% } %>
+
+                    </div>
+
+                    <div id='right'>
+                        <h3>View File</h3>
+                    </div>
+                </form>
+
+            </main>
+            <%- include('../includes/end.ejs') %>
