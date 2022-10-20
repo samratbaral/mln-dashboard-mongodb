@@ -73,10 +73,10 @@ form {
 }
 
 #left {
-  width: 35%;
+  width: auto;
   float: left;
   background-color: lightgoldenrodyellow;
-  height: 100%
+  height: auto
 }
 
 #right {

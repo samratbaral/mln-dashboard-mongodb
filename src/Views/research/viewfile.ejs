@@ -7,23 +7,23 @@
         <%- include('../includes/navigation.ejs') %>
             <main>
                 <h2>File Manager</h2>
-                <h3>Current Directory (Local File System)</h3>
+                <h4>Current Directory (Local File System)</h4>
+                <i><%- jsonData['DIRECTORY']%></i>
+                <br>
 
-
-                <p>
-                    <%- jsonData['DIRECTORY']%>
-                </p>
-
-                <form action="/viewflies" method="POST">
+                <form action="/viewfiles" method="POST">
 
                     <div id='left'>
                         <h3>All File</h3>
-                        <% for(var i=0; i < jsonData['FILES'].length; i++) {%>
-                            <p>
-                                <%= jsonData['FILES'][i]%>
-                            </p>
-                            <% } %>
+                        <left>
+                            <% for(var i=0; i < jsonData['FILES'].length; i++) {%>
 
+                                <a href="/viewfile">
+                                    <%= jsonData['FILES'][i]%>
+                                </a>
+                                <br>
+                                <% } %>
+                        </left>
                     </div>
 
                     <div id='right'>
