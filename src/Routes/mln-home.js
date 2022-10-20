@@ -10,6 +10,6 @@ const isAuth = require("../Middleware/is-auth");
 router.get("/", mlnDashController.getIndex);
 
 router.get("/viewfile", mlnDashController.getViewFile);
-router.post("/viewfile", mlnDashController.postViewFile);
+router.get("/viewfile", mlnDashController.postViewFile);
 
 module.exports = router;

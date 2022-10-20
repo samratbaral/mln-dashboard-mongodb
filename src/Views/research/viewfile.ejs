@@ -20,19 +20,31 @@
                         <left>
                             <a href="http://127.0.0.1:5000/cd?path=..">Go Back</a>
                             <br>
+                            <br>
                             <% for(var i=0; i < jsonData['FILES'].length; i++) {%>
+                                <% if(!jsonData['FILES'][i].includes('.')){ %>
+                                    <a
+                                        href="http://127.0.0.1:5000/cd?path=<%= jsonData['DIRECTORY']+'/'+jsonData['FILES'][i] %>">
+                                        <%= jsonData['FILES'][i]%>
+                                    </a>
+                                    <br>
+                                    <%} else{%>
+                                        
+                                            <a
+                                                href="http://127.0.0.1:5000/view?file=<%= jsonData['DIRECTORY']+'/'+jsonData['FILES'][i] %>">
+                                                <%= jsonData['FILES'][i]%>
+                                            </a>
+                                            <br>
 
-                                <a
-                                    href="http://127.0.0.1:5000/cd?path=<%= jsonData['DIRECTORY']+'/'+jsonData['FILES'][i] %>">
-                                    <%= jsonData['FILES'][i]%>
-                                </a>
-                                <br>
-                                <% } %>
+                                            <% } %>
+                                                <% } %>
                         </left>
                     </div>
 
                     <div id='right'>
                         <h3>View File</h3>
+                        
+                 
                     </div>
                 </form>
 

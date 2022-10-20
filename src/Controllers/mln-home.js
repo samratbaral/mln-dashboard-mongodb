@@ -5,9 +5,9 @@ const http = require("http");
 const express = require("express");
 const request = require("request");
 const { validationResult } = require("express-validator");
-const { readdir } = require('fs').promises;
+const { readdir } = require("fs").promises;
 
-const bison = require('bison');
+const bison = require("bison");
 const encode = bison.encode;
 const decode = bison.decode;
 
@@ -43,29 +43,33 @@ exports.getViewFile = (req, res, next) => {
     //console.log('body',body);
     // console.log("first : "+JSON.parse(body));
     // console.log(JSON.parse(body)["FILES"][0]);
-    const file =[];
-    file.push(JSON.parse(body))
- 
+    console.log(JSON.parse(body));
+    const file = [];
+    file.push(JSON.parse(body));
+
     res.render("research/viewfile", {
       path: "/viewfile",
       pageTitle: "View Files",
-      jsonData: JSON.parse(body)
+      jsonData: JSON.parse(body),
     });
   });
-  
-
-  
-
 };
 
 exports.postViewFile = (req, res, next, body) => {
   console.log("jeeeeeee");
-  const data = req.body.data;
-  if (!errors.isEmpty()) {
-    return res.status(422).render("research/viewfile", {
-      path: "/viewfile",
-      pageTitle: "View Files",
-    });
-  }
+  // request("http://127.0.0.1:5000/view", (error, response, body) => {
+  //   //console.log('error:',error);
+  //   //console.log('statusCode:', response && response.statusCode);
+  //   //console.log('body',body);
+  //   // console.log("first : "+JSON.parse(body));
+  //   // console.log(JSON.parse(body)["FILES"][0]);
+  //   const file = [];
+  //   file.push(JSON.parse(body));
 
+  //   res.render("research/viewfile", {
+  //     path: "/viewfile",
+  //     pageTitle: "View Files",
+  //     jsonData: JSON.parse(body),
+  //   });
+  // });
 };
