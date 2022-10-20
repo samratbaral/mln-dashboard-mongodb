@@ -1,8 +1,19 @@
+# #import packages
+# from flask import Flask
+# from flask import render_template_string
+# from flask import render_template
+# import os
+# from flask import redirect
+# import subprocess
+# from flask import request
+# # handle root route
 from flask import Flask
 import os
 import subprocess
 import json
 from flask import jsonify
+from flask import request
+from flask import redirect
 
 app = Flask(__name__)
 
@@ -17,10 +28,11 @@ def index():
 
 @app.route('/cd')
 def cd():
-    # run 'level_up' command
-    os.chdir(request.args.get('path'))
 
-    return redirect
+    # run 'level_up' commands
+    os.chdir(request.args.get('path'))
+    y=os.getcwd()
+    return redirect('http://localhost:3000/viewfile')
 
 
 if __name__ == "__main__":

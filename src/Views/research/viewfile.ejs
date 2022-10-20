@@ -8,7 +8,9 @@
             <main>
                 <h2>File Manager</h2>
                 <h4>Current Directory (Local File System)</h4>
-                <i><%- jsonData['DIRECTORY']%></i>
+                <i>
+                    <%- jsonData['DIRECTORY']%>
+                </i>
                 <br>
 
                 <form action="/viewfiles" method="POST">
@@ -16,9 +18,12 @@
                     <div id='left'>
                         <h3>All File</h3>
                         <left>
+                            <a href="http://127.0.0.1:5000/cd?path=..">Go Back</a>
+                            <br>
                             <% for(var i=0; i < jsonData['FILES'].length; i++) {%>
 
-                                <a href="/viewfile">
+                                <a
+                                    href="http://127.0.0.1:5000/cd?path=<%= jsonData['DIRECTORY']+'/'+jsonData['FILES'][i] %>">
                                     <%= jsonData['FILES'][i]%>
                                 </a>
                                 <br>
