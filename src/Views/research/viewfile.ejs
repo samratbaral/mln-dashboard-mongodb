@@ -13,7 +13,7 @@
                 </i>
                 <br>
 
-                <form action="/viewfiles" method="POST">
+                <form action="/viewfiles" method="GET">
 
                     <div id='left'>
                         <h3>All File</h3>
@@ -29,23 +29,34 @@
                                     </a>
                                     <br>
                                     <%} else{%>
-                                        
-                                            <a
-                                                href="http://127.0.0.1:5000/view?file=<%= jsonData['DIRECTORY']+'/'+jsonData['FILES'][i] %>">
-                                                <%= jsonData['FILES'][i]%>
-                                            </a>
-                                            <br>
 
+                                        <a
+                                            href="http://127.0.0.1:5000/view?file=<%= jsonData['DIRECTORY']+'/'+jsonData['FILES'][i] %>">
+                                            <%= jsonData['FILES'][i]%>
+                                        </a>
+                                        <br>
+
+                                        <% } %>
                                             <% } %>
-                                                <% } %>
                         </left>
                     </div>
 
-                    <div id='right'>
+                    <left>
+                        <form id="right" action="/viewfile" method="POST"></form>
                         <h3>View File</h3>
-                        
-                 
-                    </div>
+                        <!-- <%= jsonData['CONTENT'] %> -->
+                                <!-- <% for(var i=0; i < jsonData['FILES'].length; i++) {%>
+                                    </a
+                                        href="http://localhost:3000/viewfile=<%= jsonData['DIRECTORY']+'/'+jsonData['FILES'][i] %>">
+                                    </a>
+                                    <%= jsonData['FILES'][i]%>
+                                <% } %> -->
+
+
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        </form>
+                </left>
+
                 </form>
 
             </main>

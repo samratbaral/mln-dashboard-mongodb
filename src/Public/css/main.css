@@ -73,14 +73,14 @@ form {
 }
 
 #left {
-  width: auto;
+  width: 15%;
   float: left;
   background-color: lightgoldenrodyellow;
   height: auto
 }
 
 #right {
-  width: 65%;
+  width: 80%;
   float: right;
   background-color: white;
   height: 100%

@@ -306,7 +306,7 @@ exports.postReset = (req, res, next) => {
         return user.save();
       })
       .then((result) => {
-        res.redirect("/");
+        res.redirect("/login");
         //transporter.sendMail({
         // to: req.body.email,
         // from: 'shop@node-complete.com',
