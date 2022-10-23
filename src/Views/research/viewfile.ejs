@@ -13,7 +13,7 @@
                 </i>
                 <br>
 
-                <form action="/viewfiles" method="GET">
+                <form action="/viewfile" method="GET">
 
                     <div id='left'>
                         <h3>All File</h3>
@@ -45,7 +45,7 @@
                         <form id="right" action="/viewfile" method="POST"></form>
                         <h3>View File</h3>
                         <!-- <%= jsonData['CONTENT'] %> -->
-                                <!-- <% for(var i=0; i < jsonData['FILES'].length; i++) {%>
+                        <!-- <% for(var i=0; i < jsonData['FILES'].length; i++) {%>
                                     </a
                                         href="http://localhost:3000/viewfile=<%= jsonData['DIRECTORY']+'/'+jsonData['FILES'][i] %>">
                                     </a>
@@ -54,7 +54,7 @@
 
 
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                        </form>
+                </form>
                 </left>
 
                 </form>

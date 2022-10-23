@@ -45,7 +45,7 @@ const fileFilter = (req, file, cb) => {
 };
 
 app.set("view engine", "ejs");
-app.set("views", "views");
+app.set("Views", "views");
 
 const adminRoutes = require("./Routes/admin");
 const mlnRoutes = require("./Routes/mln-home");

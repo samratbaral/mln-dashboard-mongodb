@@ -38,15 +38,13 @@ exports.getIndex = (req, res, next) => {
 };
 
 exports.getViewFile = (req, res, next) => {
-
   request("http://127.0.0.1:5000/flask", (error, response, body) => {
-    
     //console.log('error:',error);
     //console.log('statusCode:', response && response.statusCode);
     //console.log('body',body);
     // console.log("first : "+JSON.parse(body));
     // console.log(JSON.parse(body)["FILES"][0]);
-    console.log(JSON.parse(body));
+    // console.log(JSON.parse(body));
 
     // file.push(JSON.parse(body));
     fs.readFile("app.py", "utf8", (err, data) => {
@@ -54,72 +52,128 @@ exports.getViewFile = (req, res, next) => {
         console.error(err);
         return;
       }
-
     });
     res.render("research/viewfile", {
       path: "/viewfile",
       pageTitle: "View Files",
       jsonData: JSON.parse(body),
       file_content: "data",
-    }
-    );
-    console.log(JSON.parse(body)["FILES"][0]);
+    });
+    // console.log(JSON.parse(body)["FILES"][0]);
   });
 };
 
 exports.postViewFile = (req, res, next) => {
   console.log("jeeeeeee");
   const file_content = req.body.jsonData;
-  request("http://127.0.0.1:5000/flask", (error, response, body) => {
-    
-    //console.log('error:',error);
-    //console.log('statusCode:', response && response.statusCode);
-    //console.log('body',body);
-    // console.log("first : "+JSON.parse(body));
-    // console.log(JSON.parse(body)["FILES"][0]);
-    console.log(JSON.parse(body));
+};
 
-    // file.push(JSON.parse(body));
-    fs.readFile("app.py", "utf8", (err, data) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-
-    });
-    res.render("research/viewfile", {
-      path: "/viewfile",
-      pageTitle: "View Files",
-      jsonData: JSON.parse(body),
-      file_content: "data",
-    }
-    );
-    
-     console.log(JSON.parse(body)["FILES"][0]);
-
+exports.getUserDirectoryFile =(req,res,next)=>{
+  res.render('research/user-directory',{
+    path:'/user-directory',
+    pageTitle:'User Directory',
   });
+};
 
+exports.postUserDirectoryFile =(req,res,next)=>{
+  // const file_content = req.body.jsonData;
+  // console.log(file_content);
+  res.render('research/user-directory',{
+    path:'/user-directory',
+    pageTitle:'User Directory',
+    // jsonData:file_content,
+  });
+};
 
+exports.getGenerationFile = (req, res, next) => {
+  console.log("Generation [GET]");
+  res.render("research/generation", {
+    path: "/generation",
+    pageTitle: "Generation",
+  });
+};
 
+exports.postGenerationFile = (req, res, next) => {
+  console.log("Generation [POST]");
+  // const name = req.body.name;
+  // const email = req.body.email;
+  // const phone = req.body.phone;
+  // const file = req.body.file;
+  // const generation = new GenFiles({
+  //   name: name,
+  //   email: email,
+  //   phone: phone,
+  //   file: file,
+  // });
+  // generation
+  //   .save()
+  //   .then((result) => {
+  //     console.log("Created Order");
+  //     res.redirect("/generation");
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
 };
 
 
- 
+exports.getAnalysisFile = (req, res, next) => {
+  console.log("Analysis [GET]");
+  res.render("research/analysis", {
+    path: "/analysis",
+    pageTitle: "Analysis",
+  });
+};
 
-  // response("http://127.0.0.1:5000/view", (error, response, body) => {
-  //   console.log("error:", error);
-  //   //console.log('statusCode:', response && response.statusCode);
-  //   console.log("body", body);
-  //   console.log("first : " + JSON.parse(body));
-  //   // console.log(JSON.parse(body)["FILES"][0]);
-  //   const file = [];
-  //   file.push(JSON.parse(body));
-
-  //   res.render("research/viewfile", {
-  //     path: "/viewfile",
-  //     pageTitle: "Viewing Files",
-  //     jsonView: JSON.parse(body),
-  //   }
-    
-  //   );
+exports.postAnalysisFile = (req, res, next) => {
+  console.log("Analysis [POST]");
+  // const name = req.body.name;
+  // const email = req.body.email;
+  // const phone = req.body.phone;
+  // const file = req.body.file;
+  // const analysis = new Order({
+  //   name: name,
+  //   email: email,
+  //   phone: phone,
+  //   file: file,
   // });
+  // analysis
+  //   .save()
+  //   .then((result) => {
+  //     console.log("Created Order");
+  //     res.redirect("/analysis");
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+};
+exports.getVisualizationFile = (req, res, next) => {
+  console.log("Visualization [GET]");
+  res.render("research/visualization", {
+    path: "/visualization",
+    pageTitle: "Visualization",
+  });
+};
+
+exports.postVisualizationFile = (req, res, next) => {
+  console.log("Visualization [POST]");
+  // const name = req.body.name;
+  // const email = req.body.email;
+  // const phone = req.body.phone;
+  // const file = req.body.file;
+  // const visualization = new GenFiles({
+  //   name: name,
+  //   email: email,
+  //   phone: phone,
+  //   file: file,
+  // });
+  // visualization
+  //   .save()
+  //   .then((result) => {
+  //     console.log("Created Order");
+  //     res.redirect("/visualization");
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //   });
+};

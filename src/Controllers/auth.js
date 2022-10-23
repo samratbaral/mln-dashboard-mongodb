@@ -6,11 +6,12 @@ const { validationResult } = require("express-validator");
 const validator = require("email-validator");
 const mkdirp = require("mkdirp");
 const rimraf = require("rimraf");
-const { mkdir } = require("fs");
+const mkdir = require("fs");
 const { error } = require("console");
 const fs = require('fs')
 const fse = require('fs-extra')
 const User = require("../Models/user");
+const jwt = require("jsonwebtoken");
 
 exports.getLogin = (req, res, next) => {
   let message = req.flash("error");
@@ -61,7 +62,7 @@ exports.getSignup = (req, res, next) => {
       first_name: "",
       last_name: "",
       email: "",
-      phone: "000-000-0000",
+      phone: "0000000000",
       password: "",
       confirmPassword: "",
     },
@@ -194,7 +195,7 @@ exports.postLogin = (req, res, next) => {
             req.session.user = user;
             return req.session.save((err) => {
               console.log(err);
-              res.redirect("/viewfile");
+              res.redirect("/");
             });
           }
           else{
@@ -269,8 +270,14 @@ exports.postSignup = (req, res, next) => {
       return user.save();
     })
     .then((result) => {
-      res.redirect("/login");
       mkdirp(username)
+      res.redirect("/login");
+      // if(!fs.existsSync(username)){
+      //   const userdirectory = '/src/MLN-Home/User/'+username;
+      //   console.log(userdirectory);
+      //   fs.mkdirSync(userdirectory);
+      //   }
+      
       console.log("CREATE USER DIRECTORY FOLDER - [SUCESS]");
       //return transporter.sendMail({
       // to: email,
