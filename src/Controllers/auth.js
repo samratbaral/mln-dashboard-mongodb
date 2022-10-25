@@ -8,10 +8,11 @@ const mkdirp = require("mkdirp");
 const rimraf = require("rimraf");
 const mkdir = require("fs");
 const { error } = require("console");
-const fs = require('fs')
-const fse = require('fs-extra')
+const fs = require("fs");
+const fse = require("fs-extra");
 const User = require("../Models/user");
 const jwt = require("jsonwebtoken");
+const makeDir = require("make-dir");
 
 exports.getLogin = (req, res, next) => {
   let message = req.flash("error");
@@ -177,28 +178,25 @@ exports.postLogin = (req, res, next) => {
           if (!doMatch) {
             custom((value, { req }) => {
               if (value !== req.body.password) {
-                throw new Error("Passwords have to match, please recheck again!");
+                throw new Error(
+                  "Passwords have to match, please recheck again!"
+                );
               }
               return true;
             });
-            return Promise.reject(
-              "Invalid Password, please try again!."
-            );
+            return Promise.reject("Invalid Password, please try again!.");
           }
-          if (password===null && doMatch === null) {
-            return Promise.resolve(
-              "Password is empty, please try again!."
-            );
+          if (password === null && doMatch === null) {
+            return Promise.resolve("Password is empty, please try again!.");
           }
           if (doMatch) {
             req.session.isLoggedIn = true;
             req.session.user = user;
             return req.session.save((err) => {
               console.log(err);
-              res.redirect("/");
+              res.redirect("/viewfiles");
             });
-          }
-          else{
+          } else {
             return res.status(422).render("auth/login", {
               path: "/login",
               pageTitle: "Login",
@@ -210,7 +208,6 @@ exports.postLogin = (req, res, next) => {
               validationErrors: [],
             });
           }
-          
         })
         .catch((err) => {
           console.log(err);
@@ -270,14 +267,29 @@ exports.postSignup = (req, res, next) => {
       return user.save();
     })
     .then((result) => {
-      mkdirp(username)
-      res.redirect("/login");
-      // if(!fs.existsSync(username)){
-      //   const userdirectory = '/src/MLN-Home/User/'+username;
-      //   console.log(userdirectory);
-      //   fs.mkdirSync(userdirectory);
+      fse.mkdirpSync(username);
+      // const dir = '/src/MLN-Home/User/${username: req.body.username}';
+      // if (!fs.existsSync(dir)) {
+      //   fs.mkdirSync(dir);
+      //   console.log("Directory was Made.");
+      // } else {
+      //   console.log("Directory already exists.");
+      // }
+
+      // fs.access("../MLN-Home/User", (err) => {
+      //   if (err) {
+      //     fs.mkdir("../MLN-Home/User", (err) => {
+      //       if (err) {
+      //         console.log(err);
+      //       } else {
+      //         console.log("New directory successfully created.");
+      //       }
+      //     });
+      //   } else {
+      //     console.log("Directory already exists.");
+
       //   }
-      
+      // });
       console.log("CREATE USER DIRECTORY FOLDER - [SUCESS]");
       //return transporter.sendMail({
       // to: email,

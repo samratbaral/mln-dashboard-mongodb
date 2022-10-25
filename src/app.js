@@ -10,6 +10,8 @@ const flash = require("connect-flash");
 const multer = require("multer");
 const errorController = require("./Controllers/error");
 const User = require("./Models/user");
+const makeDir = require("make-dir");
+
 // const mongoConnect = require('./Utilities/database').mongoConnect;
 
 const MONGODB_URI =
@@ -25,7 +27,8 @@ const csrfProtection = csrf();
 
 const filestorage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "images");
+    cb(null, "uploads");
+    // cb(null, "images");
   },
   filename: (req, file, cb) => {
     cb(null, new Data().toISOString() + "-" + file.originalname);
@@ -34,9 +37,9 @@ const filestorage = multer.diskStorage({
 
 const fileFilter = (req, file, cb) => {
   if (
-    file.mimetype === "image/png" ||
-    file.mimetype === "image/jpg" ||
-    file.mimetype === "image/jpeg"
+    file.mimetype === "uploads/config" ||
+    file.mimetype === "uploads/py" ||
+    file.mimetype === "uploads/gen"
   ) {
     cb(null, true);
   } else {
@@ -118,7 +121,6 @@ app.use((error, req, res, next) => {
     isAuthenticated: req.session.isLoggedIn,
   });
 });
-
 mongoose
   .connect(MONGODB_URI)
   .then((result) => {

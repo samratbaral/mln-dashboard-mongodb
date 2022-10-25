@@ -27,7 +27,13 @@ exports.getIndex = (req, res, next) => {
       res.render("research/index", {
         prods: products,
         pageTitle: "Research",
+        // path: "/",
         path: "/",
+        webkitURL: "http://localhost:3000/"+req.username,
+        customElements: "http://localhost:3000/"+req.username,
+
+
+
       });
     })
     .catch((err) => {
