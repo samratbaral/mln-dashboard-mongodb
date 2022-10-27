@@ -73,17 +73,17 @@ form {
 }
 
 #left {
-  width: 15%;
+  width: 100%;
   float: left;
-  background-color: lightgoldenrodyellow;
+  background-color: white;
   height: auto
 }
 
 #right {
-  width: 80%;
+  width: 100%;
   float: right;
   background-color: white;
-  height: 100%
+  height: auto
 }
 
 .main-header__item a,
@@ -101,6 +101,24 @@ form {
 .main-header__item a.active,
 .main-header__item button:hover,
 .main-header__item button:active {
+  color: #f58025;
+}
+
+.header__item a,
+.header__item button {
+  font: inherit;
+  background: transparent;
+  border: none;
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.header__item a:hover,
+.header__item a:active,
+.header__item a.active,
+.header__item button:hover,
+.header__item button:active {
   color: #f58025;
 }
 

@@ -24,7 +24,7 @@ Code is organized under the following major files and directories:
 |    |    ├── auth.js: Authenticate User
 |    |    ├── error.js: Handles Errors
 |    |    └── mln-home.js : Handle the file system, layer |generation, set config, analysis & visualization
-|    |    
+|    |
 |    ├── Middleware: Handles all the Middle Ware between js application.
 |    |    |
 |    |    └── is-auth.js: redirects to log-in

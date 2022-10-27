@@ -194,7 +194,7 @@ exports.postLogin = (req, res, next) => {
             req.session.user = user;
             return req.session.save((err) => {
               console.log(err);
-              res.redirect("/viewfiles");
+              res.redirect("/mln-home/?"+ username);
             });
           } else {
             return res.status(422).render("auth/login", {
@@ -290,6 +290,10 @@ exports.postSignup = (req, res, next) => {
 
       //   }
       // });
+      res.redirect("/login");
+
+
+
       console.log("CREATE USER DIRECTORY FOLDER - [SUCESS]");
       //return transporter.sendMail({
       // to: email,

@@ -12,34 +12,39 @@
                     <%= directory %>
                 </i>
                 <br>
-                <form action="/viewfile" method="GET">
+
+                <form action="/cd" method="GET">
+
                     <div id='left'>
                         <left class="header__item">
+                        <a  class="<%= path === '/cd' ? 'active' : '' %>"
+                            href="/cd?directory=<%= directory %>&selectedFolder=..">
+                            Go back
+                        </a>
+                        <left>
                             <% for(let i=0; i < files.length; i++) { %>
                                 <% if (files[i].includes(".")) { %>
-                                    <li class="main-header__item">
-                                        <a class="<%= path === '/viewfilecontent' ? 'active' : '' %>"
-                                            href="/viewfilecontent?directory=<%= directory %>&selectedFile=<%=files[i]%>">
-                                            ├──<%=files[i] %>
+                                    <li class="header__item">
+                                        <a  class="<%= path === '/cd' ? 'active' : '' %>"
+                                        href="/cdfilecontent?directory=<%= directory %>&selectedFile=<%= files[i] %>">
+                                        ├──<%= files[i] %>
                                         </a>
                                     </li>
                                     <% } else { %>
                                         <li class="header__item">
                                             <a class="<%= path === '/cd' ? 'active' : '' %>"
-                                                href="/cd?directory=<%= directory %>&selectedFolder=<%= files[i] %> ">
-                                                ├──<%= files[i] %>
+                                            href="/cd?directory=<%= directory %>&selectedFolder=<%= files[i] %>">
+                                            ├──<%= files[i] %>
                                             </a>
                                         </li>
                                         <% } %>
                                             <% } %>
                         </left>
                     </div>
+
                     <left>
-                        <form id="right">
-
-
-                        </form>
-                    </left>
+                        <form id="right"></form>
+                </left>
 
                 </form>
 

@@ -19,76 +19,122 @@ const response = require("express");
 //Backup.fetchAll()
 //documentation: https://mongoosejs.com
 
-exports.getIndex = (req, res, next) => {
-  GenFiles.find({}, (err, docs) => {
-    res.status(200).json(docs);
-  })
-    .then((products) => {
-      res.render("research/index", {
-        prods: products,
-        pageTitle: "Research",
-        // path: "/",
-        path: "/",
-        webkitURL: "http://localhost:3000/"+req.username,
-        customElements: "http://localhost:3000/"+req.username,
+exports.getMln = (req, res, next) => {
+  console.log("MLN [GET]");
+  res.render("research/mln", {
+    pageTitle: "MLN",
+    path: "/mln",
+    isAuthenticated: req.session.isLoggedIn,
+  });
+};
 
+exports.getMlnHome = (req, res, next) => {
+  console.log("MLN Home [GET]");
+  const { username } = req.query;
+  console.log(username);
+  res.render("research/mln-home", {
+    pageTitle: "MLN Home",
+    path: "/mln-home",
+    isAuthenticated: req.session.isLoggedIn,
+    username,
+  });
+};
 
-
-      });
-    })
-    .catch((err) => {
-      const error = new Error(err);
-      error.httpStatusCode = 500;
-      return next(error);
-    });
+exports.postMlnHome = (req, res, next) => {
+  console.log("MLN Home [POST]");
+  res.render("research/mln-home", {
+    pageTitle: "MLN Home",
+    path: "/mln-home",
+    isAuthenticated: req.session.isLoggedIn,
+  });
 };
 
 exports.getViewFile = (req, res, next) => {
-  request("http://127.0.0.1:5000/flask", (error, response, body) => {
-    //console.log('error:',error);
-    //console.log('statusCode:', response && response.statusCode);
-    //console.log('body',body);
-    // console.log("first : "+JSON.parse(body));
-    // console.log(JSON.parse(body)["FILES"][0]);
-    // console.log(JSON.parse(body));
-
-    // file.push(JSON.parse(body));
-    fs.readFile("app.py", "utf8", (err, data) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-    });
-    res.render("research/viewfile", {
-      path: "/viewfile",
-      pageTitle: "View Files",
-      jsonData: JSON.parse(body),
-      file_content: "data",
-    });
-    // console.log(JSON.parse(body)["FILES"][0]);
+  console.log("View [GET]");
+  res.render("research/viewfile", {
+    path: "/viewfile",
+    pageTitle: "View File",
+    isAuthenticated: req.session.isLoggedIn,
+    files: fs.readdirSync(__dirname, "utf8"),
+    directory: __dirname,
   });
 };
 
 exports.postViewFile = (req, res, next) => {
-  console.log("jeeeeeee");
-  const file_content = req.body.jsonData;
-};
-
-exports.getUserDirectoryFile =(req,res,next)=>{
-  res.render('research/user-directory',{
-    path:'/user-directory',
-    pageTitle:'User Directory',
+  console.log("View [POST]");
+  res.render("research/viewfile", {
+    path: "/viewfile",
+    pageTitle: "View File",
+    isAuthenticated: req.session.isLoggedIn,
   });
 };
 
-exports.postUserDirectoryFile =(req,res,next)=>{
-  // const file_content = req.body.jsonData;
-  // console.log(file_content);
-  res.render('research/user-directory',{
-    path:'/user-directory',
-    pageTitle:'User Directory',
-    // jsonData:file_content,
+exports.getViewFileContent = (req, res, next) => {
+  console.log("View [GET]");
+  const { selectedFile } = req.query;
+  const { directory } = req.query;
+  let data = fs.readFileSync(path.join(directory, selectedFile), "utf8");
+  let lines = data.split(/\r?\n/);
+  res.render("research/viewfilecontent", {
+    path: "/viewfilecontent",
+    pageTitle: "View File Content",
+    files: fs.readdirSync(__dirname),
+    lines,
+    directory,
   });
+};
+
+exports.postViewFileContent = (req, res, next) => {
+  console.log("View File Content [POST]");
+};
+
+exports.getChangeDirectory = (req, res, next) => {
+  console.log("Change Directory [GET]");
+  const { selectedFolder } = req.query;
+  const { directory } = req.query;
+  res.render("research/cd", {
+    path: "/cd",
+    pageTitle: "Change Directory",
+    files: fs.readdirSync(path.join(directory, selectedFolder)),
+    selectedFolder,
+    directory: path.join(directory, selectedFolder),
+  });
+};
+
+exports.postChangeDirectory = (req, res, next) => {
+  console.log("Change Directory [POST]");
+};
+
+exports.getChangeDirectoryFileContent = (req, res, next) => {
+  const { selectedFile } = req.query;
+  const { directory } = req.query;
+  let data = fs.readFileSync(path.join(directory, selectedFile), "utf8");
+  let lines = data.split(/\r?\n/);
+  console.log("Change Directory File Content [GET]");
+  res.render("research/viewfilecontent", {
+    path: "/viewfilecontent",
+    pageTitle: "Change Directory File Content",
+    files: fs.readdirSync(directory),
+    lines,
+    directory,
+  });
+};
+
+exports.postChangeDirectoryFileContent = (req, res, next) => {
+  console.log("Change Directory File Content [POST]");
+};
+
+exports.getUserDirectoryFile = (req, res, next) => {
+  console.log("User Directory [GET]");
+  res.render("research/user-directory", {
+    path: "/user-directory",
+    pageTitle: "User Directory",
+    isAuthenticated: req.session.isLoggedIn,
+  });
+};
+
+exports.postUserDirectoryFile = (req, res, next) => {
+  console.log("User Directory [POST]");
 };
 
 exports.getGenerationFile = (req, res, next) => {
@@ -96,6 +142,7 @@ exports.getGenerationFile = (req, res, next) => {
   res.render("research/generation", {
     path: "/generation",
     pageTitle: "Generation",
+    isAuthenticated: req.session.isLoggedIn,
   });
 };
 
@@ -122,12 +169,12 @@ exports.postGenerationFile = (req, res, next) => {
   //   });
 };
 
-
 exports.getAnalysisFile = (req, res, next) => {
   console.log("Analysis [GET]");
   res.render("research/analysis", {
     path: "/analysis",
     pageTitle: "Analysis",
+    isAuthenticated: req.session.isLoggedIn,
   });
 };
 
@@ -158,6 +205,7 @@ exports.getVisualizationFile = (req, res, next) => {
   res.render("research/visualization", {
     path: "/visualization",
     pageTitle: "Visualization",
+    isAuthenticated: req.session.isLoggedIn,
   });
 };
 

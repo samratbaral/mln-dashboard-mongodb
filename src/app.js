@@ -53,6 +53,7 @@ app.set("Views", "views");
 const adminRoutes = require("./Routes/admin");
 const mlnRoutes = require("./Routes/mln-home");
 const authRoutes = require("./Routes/auth");
+const { query } = require("express");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
@@ -107,8 +108,8 @@ app.use((req, res, next) => {
 });
 
 app.use("/admin", adminRoutes);
-
 app.use(mlnRoutes);
+// app.use("/mln", mlnRoutes);
 app.use(authRoutes);
 
 app.use(errorController.get404);

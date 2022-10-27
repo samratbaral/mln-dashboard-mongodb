@@ -3,9 +3,9 @@
 # Getting Started
 ## Requirements
 
-- **Install node.js and npm**. This server was developed and tested using the node.js v16.17.0 and npm 8.1.2 writing. Follow the directions at [this link](https://nodejs.org/en/download/) to install node.js and [this link](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/) to install npm.
+- **Install node.js and npm**. This server was developed and tested using the node.js v18.12.0 and npm 8.19.2 writing. Follow the directions at [this link](https://nodejs.org/en/download/) to install node.js and [this link](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/) to install npm.
 
-- **Install Python3 and Flask**. This server was developed and tested using the Python 3.10.7, Flask 2.2.2, and Werkzeug 2.2.2 writing. Follow the directions at [this link](https://www.python.org/downloads/) to install Python,[this link](https://flask.palletsprojects.com/en/2.0.x/installation/) to install Flask and [this link](https://pypi.org/project/Werkzeug/) to install Werkzeug.
+- **Install Python3 and Flask**. This server was developed and tested using the  Python 3.11.0 , Flask 2.2.2, and Werkzeug 2.2.2 writing. Follow the directions at [this link](https://www.python.org/downloads/) to install Python, [this link](https://flask.palletsprojects.com/en/2.0.x/installation/) to install Flask and [this link](https://pypi.org/project/Werkzeug/) to install Werkzeug.
 
 ## Installation
 

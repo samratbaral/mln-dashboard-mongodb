@@ -47,28 +47,36 @@
         <nav class="main-header__nav">
             <ul class="main-header__item-list">
 
-                <!-- <li class="main-header__item">
-                    <a class="<%= path === '/orders' ? 'active' : '' %>" href="/orders"><b>View Files</b></a>
-                </li> -->
                 <li class="main-header__item">
-                    <a class="<%= path === '/viewfile' ? 'active' : '' %>" 
-                        href="/viewfile"><b>View Files</b></a>
+                    <a class="<%= path === '/mln-home' ? 'active' : '' %>"
+                        href="/mln-home"><b>Home</b></a>
+                </li>
+                <li class="main-header__item">
+                    <a class="<%= path === '/viewfile' ? 'active' : '' %>"
+                        href="/viewfile"><b>All Files</b></a>
+                </li>
+                <li>
+                    <a class="<%= path === '/viewfilecontent' ? 'active' : '' %>" 
+                        href="/viewfilecontent"><b></b></a>
                 </li>
 
-
+                <li >
+                    <a class="<%= path === '/cd' ? 'active' : '' %>" 
+                        href="/cd"><b></b></a>
+                </li>
+                
                 <li class="main-header__item">
-                    <a class="<%= path === '/user-directory' ? 'active' : '' %>" 
+                    <a class="<%= path === '/user-directory' ? 'active' : '' %>"
                         href="/user-directory"><b>Import File</b></a>
                 </li>
 
                 <li class="main-header__item">
-                    <a class="<%= path === '/generation' ? 'active' : '' %>" 
-                        href="/generation"><b>Layer
-                            Generation</b></a>
+                    <a class="<%= path === '/generation' ? 'active' : '' %>"
+                        href="/generation"><b>Layer Generation</b></a>
                 </li>
 
                 <li class="main-header__item">
-                    <a class="<%= path === '/analysis' ? 'active' : '' %>" 
+                    <a class="<%= path === '/analysis' ? 'active' : '' %>"
                         href="/analysis"><b>Analysis</b></a>
                 </li>
                 <li class="main-header__item">
@@ -78,7 +86,8 @@
             </ul>
             <ul>
                 <li class="main-header__item">
-                    <a class="<%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products"></b>
+                    <a class="<%= path === '/admin/edit-admin' ? 'active' : '' %>"
+                        href="/admin/edit-admin"></b>
                         Account</b></a>
                 </li>
             </ul>

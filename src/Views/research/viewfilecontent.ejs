@@ -6,27 +6,32 @@
     <body>
         <%- include('../includes/navigation.ejs') %>
             <main>
+                
                 <h2>File Manager</h2>
-                <h4>Current Directory (Local File System)</h4>
-                <i>
-                    <%= directory %>
-                </i>
-                <br>
-                <form action="/viewfile" method="GET">
+            <h4>Current Directory (Local File System)</h4>
+            <i>
+                <%= directory %>
+            </i>
+            <br>
+                <form action="/viewfilecontent" method="GET">
                     <div id='left'>
                         <left class="header__item">
+                        <a class="<%= path === '/cd' ? 'active' : '' %>"
+                            href="/cd?directory=<%= directory %>&selectedFolder=..">
+                            Go back
+                        </a>
                             <% for(let i=0; i < files.length; i++) { %>
                                 <% if (files[i].includes(".")) { %>
-                                    <li class="main-header__item">
+                                    <li class="header__item">
                                         <a class="<%= path === '/viewfilecontent' ? 'active' : '' %>"
-                                            href="/viewfilecontent?directory=<%= directory %>&selectedFile=<%=files[i]%>">
-                                            ├──<%=files[i] %>
+                                        href="/viewfilecontent?directory=<%= directory %>&selectedFile=<%= files[i] %>">
+                                            ├──<%= files[i] %>
                                         </a>
                                     </li>
                                     <% } else { %>
-                                        <li class="header__item">
+                                        <li class="main-header__item">
                                             <a class="<%= path === '/cd' ? 'active' : '' %>"
-                                                href="/cd?directory=<%= directory %>&selectedFolder=<%= files[i] %> ">
+                                            href="/cd?directory=<%= directory %>&selectedFolder=<%= files[i] %>">
                                                 ├──<%= files[i] %>
                                             </a>
                                         </li>
@@ -34,12 +39,20 @@
                                             <% } %>
                         </left>
                     </div>
+
+
                     <left>
                         <form id="right">
+                        <h3>View File</h3>
+                        <% lines.forEach(line=> { %>
+                            <p>
+                                <%= line %>
+                            </p>
+                            <% }) %>
 
 
-                        </form>
-                    </left>
+                </form>
+                </left>
 
                 </form>
 
