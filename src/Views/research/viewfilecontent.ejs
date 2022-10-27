@@ -16,22 +16,26 @@
                 <form action="/viewfilecontent" method="GET">
                     <div id='left'>
                         <left class="header__item">
+                            <% if(directory === userpath) { %>
+                                ...
+                            <% } else { %>
                         <a class="<%= path === '/cd' ? 'active' : '' %>"
-                            href="/cd?directory=<%= directory %>&selectedFolder=..">
+                            href="/cd?directory=<%= directory %>&selectedFolder=..&userpath=<%= userpath %>">
                             Go back
                         </a>
+                        <% } %>
                             <% for(let i=0; i < files.length; i++) { %>
                                 <% if (files[i].includes(".")) { %>
                                     <li class="header__item">
                                         <a class="<%= path === '/viewfilecontent' ? 'active' : '' %>"
-                                        href="/viewfilecontent?directory=<%= directory %>&selectedFile=<%= files[i] %>">
-                                            ├──<%= files[i] %>
+                                        href="/viewfilecontent?directory=<%= directory %>&selectedFile=<%= files[i] %>&userpath=<%= userpath%>">
+                                            ├─<%= files[i] %>
                                         </a>
                                     </li>
                                     <% } else { %>
                                         <li class="main-header__item">
                                             <a class="<%= path === '/cd' ? 'active' : '' %>"
-                                            href="/cd?directory=<%= directory %>&selectedFolder=<%= files[i] %>">
+                                            href="/cd?directory=<%= directory %>&selectedFolder=<%= files[i] %>&userpath=<%= userpath %>">
                                                 ├──<%= files[i] %>
                                             </a>
                                         </li>

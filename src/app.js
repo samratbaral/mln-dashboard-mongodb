@@ -11,16 +11,14 @@ const multer = require("multer");
 const errorController = require("./Controllers/error");
 const User = require("./Models/user");
 const makeDir = require("make-dir");
-
+const dotenv = require("dotenv");
+dotenv.config();
+const MONGODB_URI = process.env.MONGODB_URI;
 // const mongoConnect = require('./Utilities/database').mongoConnect;
-
-const MONGODB_URI =
-  "mongodb+srv://Samrat:5EFUbXqY8Ofqo3JK@cluster0.qjskv.mongodb.net/mln-dashboard";
-
 const app = express();
 
 const store = new MongoDBStore({
-  uri: MONGODB_URI,
+  uri: process.env.MONGODB_URI,
   collection: "sessions",
 });
 const csrfProtection = csrf();
@@ -123,9 +121,9 @@ app.use((error, req, res, next) => {
   });
 });
 mongoose
-  .connect(MONGODB_URI)
+  .connect(process.env.MONGODB_URI)
   .then((result) => {
-    app.listen(3000);
+    app.listen(process.env.PORT || 3000);
     console.log(
       "Connected to MongoDB - Default http://localhost:3000/homepage"
     );

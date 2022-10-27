@@ -51,36 +51,45 @@ exports.postMlnHome = (req, res, next) => {
 
 exports.getViewFile = (req, res, next) => {
   console.log("View [GET]");
+  const rootpath = "/Users/samratbaral/Documents/GitHub/mln-dashboard-mongodb/src/mln-home/users";
+  const {username} =req.query;
+  const userpath = path.join(rootpath,username);
+  console.log(userpath);
   res.render("research/viewfile", {
-    path: "/viewfile",
+    path: "/viewfile?username="+username,
     pageTitle: "View File",
     isAuthenticated: req.session.isLoggedIn,
-    files: fs.readdirSync(__dirname, "utf8"),
-    directory: __dirname,
+    // files: fs.readdirSync(__dirname, "utf8"),
+    // directory: __dirname,
+    files: fs.readdirSync(userpath),
+    directory: userpath,
+    username,
+    userpath
   });
 };
 
 exports.postViewFile = (req, res, next) => {
   console.log("View [POST]");
-  res.render("research/viewfile", {
-    path: "/viewfile",
-    pageTitle: "View File",
-    isAuthenticated: req.session.isLoggedIn,
-  });
+
 };
 
 exports.getViewFileContent = (req, res, next) => {
   console.log("View [GET]");
   const { selectedFile } = req.query;
   const { directory } = req.query;
+  const {userpath} = req.query;
+  const {username} =req.query;
+  console.log(username);
   let data = fs.readFileSync(path.join(directory, selectedFile), "utf8");
   let lines = data.split(/\r?\n/);
   res.render("research/viewfilecontent", {
     path: "/viewfilecontent",
     pageTitle: "View File Content",
-    files: fs.readdirSync(__dirname),
+    files: fs.readdirSync(userpath),
     lines,
     directory,
+    userpath,
+    username
   });
 };
 
@@ -92,12 +101,14 @@ exports.getChangeDirectory = (req, res, next) => {
   console.log("Change Directory [GET]");
   const { selectedFolder } = req.query;
   const { directory } = req.query;
+  const {userpath} = req.query;
   res.render("research/cd", {
     path: "/cd",
     pageTitle: "Change Directory",
     files: fs.readdirSync(path.join(directory, selectedFolder)),
     selectedFolder,
     directory: path.join(directory, selectedFolder),
+    userpath
   });
 };
 
@@ -106,17 +117,21 @@ exports.postChangeDirectory = (req, res, next) => {
 };
 
 exports.getChangeDirectoryFileContent = (req, res, next) => {
+  console.log("Change Directory File Content [GET]");
   const { selectedFile } = req.query;
   const { directory } = req.query;
+  const {userpath} = req.query;
+  const {username} =req.query;
   let data = fs.readFileSync(path.join(directory, selectedFile), "utf8");
   let lines = data.split(/\r?\n/);
-  console.log("Change Directory File Content [GET]");
   res.render("research/viewfilecontent", {
     path: "/viewfilecontent",
     pageTitle: "Change Directory File Content",
     files: fs.readdirSync(directory),
     lines,
     directory,
+    userpath,
+    username
   });
 };
 

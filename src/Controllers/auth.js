@@ -194,7 +194,8 @@ exports.postLogin = (req, res, next) => {
             req.session.user = user;
             return req.session.save((err) => {
               console.log(err);
-              res.redirect("/mln-home/?"+ username);
+              // res.redirect("/mln-home");
+              res.redirect("/viewfile?username="+ user.username);
             });
           } else {
             return res.status(422).render("auth/login", {

@@ -3,18 +3,6 @@ const { validationalResult } = require("express-validator");
 
 const fileHelper = require("../Utilities/file");
 const GenFiles = require("../Models/generation");
-// add-product > add-admin
-// products > admins
-// edit-product > edit-admin
-// productID > adminID
-// delete-product > delete-admin
-
-// postAddProduct > postAddAdmin
-// getProducts > getAdmins
-// getEditProduct > getEditAdmin
-// postDeleteProduct > postDeleteAdmin
-
-// const Backup = require('../Models/backup');
 
 exports.getAddProduct = (req, res, next) => {
   res.render("admin/edit-admin", {
