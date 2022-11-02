@@ -4,15 +4,15 @@
 
 ## Getting Started
 
-Please see the [Getting Started](/Documents/gettingstarted.md) section for instructions on how to get started with this project.
+Please see the [Getting Started](/docs/Documents-App/gettingstarted.md) section for instructions on how to get started with this project.
 
 ## Documentation
 
-Please see the [Documents](https://github.com/samratbaral/mln-dashboard-mongodb/tree/master/Documents) directory for documentation.
+Please see the [Summary](/docs/Documents-App/summary.md/) of directory for documentation.
 
 ## Contributing
 
-Please see our [Contributing Guide](Readme.md) for more information. If you have any questions, please contact me `samratbaral.sb [at] gmail [dot] com`.
+Please see our [Contributing Guide](/CONTRIBUTING) for more information. If you have any questions, please contact me `samratbaral.sb [at] gmail [dot] com`.
 
 ## Dev notes
 
@@ -22,7 +22,7 @@ Need to Update/Upgrade:
 - get started with organization page
 - create organization page (accessible from account settings)
 - account settings.
-- database working need privelege on the database for network IP address.
+- database working need privilege on the database for network IP address.
 - make graphql server schema, endpoint, and resolvers
 - backend/api documentation
 
@@ -33,9 +33,9 @@ TODO: sidebar have two tabs visible for all research tab.
 
 TODO: Research tab: after log-in
 
-- [ ] User direcotory integration with flask app.
+- [ ] User directory integration with flask app.
 - [ ] Layer generation config file integration with flask app.
-- [ ] Analysis file intergration with flask app.
+- [ ] Analysis file integration with flask app.
 - [ ] Visualization integration with flask app.
 
 Later TODO's:
