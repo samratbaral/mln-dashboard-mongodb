@@ -51,7 +51,8 @@ exports.postMlnHome = (req, res, next) => {
 
 exports.getViewFile = (req, res, next) => {
   console.log("View [GET]");
-  const rootpath = "/Users/samratbaral/Documents/GitHub/mln-dashboard-mongodb/src/mln-home/users";
+  // const rootpath = "/Users/samratbaral/Documents/GitHub/mln-dashboard-mongodb/src/mln-home/users";
+  const rootpath = process.env.APP_USER_DIRECTORY
   const {username} =req.query;
   const userpath = path.join(rootpath,username);
   console.log(userpath);

@@ -268,7 +268,16 @@ exports.postSignup = (req, res, next) => {
       return user.save();
     })
     .then((result) => {
-      fse.mkdirpSync(username);
+      fs.mkdirSync(username);
+      console.log(process.env.APP_USER_DIRECTORY);
+      console.log(typeof process.env.APP_USER_DIRECTORY);
+      console.log(typeof username);
+      const dir = process.env.APP_USER_DIRECTORY + username;
+      fs.mkdirSync(dir);
+
+      // fs.mkdirpSync(path.join(process.env.APP_USER_DIRECTORY + username));
+      // fse.mkdirpSync(username);
+
       // const dir = '/src/MLN-Home/User/${username: req.body.username}';
       // if (!fs.existsSync(dir)) {
       //   fs.mkdirSync(dir);
@@ -441,6 +450,8 @@ exports.postDeleteUser = (req, res, next) => {
         })
         .catch((err) => {
           console.log(err);
+          //deleteUser.delete();
+          fse.rmdirSync("../MLN-Home/User/" + username);
           res.redirect("/logout");
         });
     })
