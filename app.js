@@ -13,7 +13,7 @@ const User = require("./Models/user");
 // const mongoConnect = require('./Utilities/database').mongoConnect;
 
 const MONGODB_URI =
-  "mongodb+srv://Samrat:5EFUbXqY8Ofqo3JK@cluster0.qjskv.mongodb.net/mln-dashboard";
+ MONGOURL;
 
 const app = express();
 
