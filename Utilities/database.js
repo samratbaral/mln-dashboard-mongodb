@@ -5,7 +5,7 @@
 
 // const mongoConnect = callback => {
 //   MongoClient.connect(
-//     'mongodb+srv://Samrat:5EFUbXqY8Ofqo3JK@cluster0.qjskv.mongodb.net/backup-mln'
+//     ''//Setup Yout Own
 //   )
 //     .then(client => {
 //       console.log('Connected! - Backup Automated');
